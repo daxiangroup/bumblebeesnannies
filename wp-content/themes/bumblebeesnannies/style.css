@@ -6,3 +6,93 @@ Author URI: http://www.daxiangroup.com/
 Version: 1.0
 Tags: Simple, Clean, Elegant, Professional
 */
+
+body {
+    background: url(img/bg_page.jpg) #f7f7f7 repeat-x;
+    border-top: solid 5px #b966a7;
+    min-height: 100%;
+}
+
+#wrapper {
+    width: 940px;
+    margin: 0 auto;
+}
+
+    #blog-title {
+        background-image: url(img/logo.jpg);
+        width: 482px;
+        height: 138px;
+    }
+
+    #access {
+        background-image: url(img/bg_navigation.jpg);
+        width: 940px;
+        height: 77px;
+    }
+
+    #impact {
+        position: relative;
+        background-image: url(img/impact/1.png);
+        width: 940px;
+        height: 281px;
+        margin-bottom: 30px;
+    }
+        #tagline {
+            position: relative;
+            background-image: url(img/bg_tagline.png);
+            width: 696px;
+            height: 62px;
+            max-height: 48px;
+            top: 257px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 15px;
+            font-family: Dosis;
+            font-size: 14pt;
+            text-transform: uppercase;
+        }
+
+    #main {
+
+    }
+
+    #body {
+        width: 665px;
+        margin-left: 22px;
+        text-align: justify;
+    }
+
+
+.entry-title, .entry-title a {
+    font-family: Dosis;
+    font-size: 18pt;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #000;
+    color: #333;
+}
+
+
+#footer {
+    background-image: url(img/bg_footer.jpg);
+    height: 240px;
+}
+    #footer .wrapper {
+        width: 896px;
+        margin: 0 auto;
+        padding-top: 25px;
+    }
+
+        #footer .column {
+            width: 224px;
+            color: #767676;
+            float: left;
+        }
+            #footer span {
+                font-family: Dosis;
+                font-size: 12pt;
+                font-weight: normal;
+                text-transform: uppercase;
+                color: #fff;
+            }

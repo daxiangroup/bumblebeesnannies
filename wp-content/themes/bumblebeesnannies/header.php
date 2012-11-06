@@ -11,7 +11,9 @@
     ?></title>
     <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-
+    <link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+    
     <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
      
     <?php wp_head(); ?>
@@ -27,17 +29,13 @@
         <div id="masthead">
          
             <div id="branding">
-                <div id="blog-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></div>
-<?php if ( is_home() || is_front_page() ) { ?>
-                    <h1 id="blog-description"><?php bloginfo( 'description' ) ?></h1>
-<?php } else { ?> 
-                    <div id="blog-description"><?php bloginfo( 'description' ) ?></div>
-<?php } ?>                
+                <a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home">
+                    <div id="blog-title"></div>
+                </a>
             </div><!-- #branding -->
              
             <div id="access">
-                <div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'your-theme' ) ?>"><?php _e( 'Skip to content', 'your-theme' ) ?></a></div>
-                <?php wp_page_menu( 'sort_column=menu_order' ); ?>
+                <?php //wp_page_menu( 'sort_column=menu_order' ); ?>
             </div><!-- #access -->
              
         </div><!-- #masthead -->   
