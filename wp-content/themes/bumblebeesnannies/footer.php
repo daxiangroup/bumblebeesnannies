@@ -4,8 +4,10 @@
 <div id="footer">
     <div class="wrapper">
         <div class="column">
-            <span>Bumble Bees Nannies</span><br />
-            &copy; 2012
+            <span>Bumble Bees Nannies</span>
+            <ul>
+                <li>&copy; 2012</li>
+            </ul>
         </div>
         <div class="column">
             <span>Services</span><br />
@@ -13,14 +15,22 @@
         </div>
         <div class="column">
             <span>Toronto Service Areas</span><br />
-            <?php wp_nav_menu( array( 'theme_location' => 'footer-service-areas') ); ?>
+            <ul>
+                <li>Beaches/Leslieville/Riverdale<br />Danforth/Scarborough</li>
+                <li>Roncesvalles/Ossington/<br />High Park</li>
+                <li>Leaside/Rosedale/<br />Summerhill</li>
+                <li>Davisville/Eglinton/<br />Lawrence</li>
+            </ul>
         </div>
         <div class="column">
             <span>More Information</span><br />
             <?php wp_nav_menu( array( 'theme_location' => 'footer-information') ); ?>
+            <a href="http://www.twitter.com/BumbleBeesNanny" target="_blank"><div class="social-twitter"></div></a>
+            <a href="http://www.facebook.com/pages/Bumble-Bees-Nannies-Inc/278615932216295" target="_blank"><div class="social-facebook"></div></a>
         </div>
     </div>
 </div><!-- #footer -->
 
+<?php wp_footer(); ?>
 </body>
 </html>

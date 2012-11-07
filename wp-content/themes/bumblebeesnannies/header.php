@@ -10,7 +10,7 @@
         else { bloginfo('name'); wp_title('|'); get_page_number(); }
     ?></title>
     <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="<?php echo home_url('/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
     <link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
     
@@ -32,10 +32,15 @@
                 <a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home">
                     <div id="blog-title"></div>
                 </a>
+
+                <div id="contact">
+                    <li><a href="<?php bloginfo( 'url' ) ?>/contact" title="Contact Us">Contact Us</a></li>
+                    <div>647.505.2904</div>
+                </div>
             </div><!-- #branding -->
              
             <div id="access">
-                <?php //wp_page_menu( 'sort_column=menu_order' ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'main-navigation') ); ?>
             </div><!-- #access -->
              
         </div><!-- #masthead -->   

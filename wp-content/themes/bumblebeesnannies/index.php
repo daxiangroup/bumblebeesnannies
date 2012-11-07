@@ -1,7 +1,7 @@
 <?php get_header(); ?>        
         <div id="container">
-         
             <div id="content">
+                <div id="body">
                 <?php while ( have_posts() ) : the_post() ?>
 
  
@@ -39,14 +39,8 @@
 <?php /* Close up the post div and then end the loop with endwhile */ ?>      
 
 
-                <?php endwhile; ?>                    
+                <?php endwhile; ?>
+                </div>
             </div><!-- #content -->
-             
         </div><!-- #container -->
-         
-        <div id="primary" class="widget-area">
-        </div><!-- #primary .widget-area -->
-         
-        <div id="secondary" class="widget-area">
-        </div><!-- #secondary -->
 <?php get_footer(); ?>    
