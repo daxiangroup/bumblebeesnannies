@@ -238,6 +238,7 @@ body {
     height: 457px;
     top: -20px;
     z-index: 0;
+    margin-bottom: 40px;
 }
     #four-oh-four .tagline {
         position: absolute;
