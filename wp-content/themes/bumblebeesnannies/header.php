@@ -29,7 +29,7 @@
         <div id="masthead">
          
             <div id="branding">
-                <a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home">
+                <a id="blog-title-link" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home">
                     <div id="blog-title"></div>
                 </a>
 

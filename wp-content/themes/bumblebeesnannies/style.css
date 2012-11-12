@@ -40,6 +40,10 @@ body {
         width: 482px;
         height: 138px;
     }
+    #blog-title-link {
+        width: 482px;
+        height: 138px;
+    }
 
     #branding {
         position: relative;
@@ -192,7 +196,7 @@ body {
                 text-decoration: none;
             }
             #footer a:hover {
-                color: #aaa;
+                color: #b966a7;
             }
 
             #footer span {
@@ -212,22 +216,24 @@ body {
             #footer .column .social-twitter {
                 background-image: url(img/soc_twitter_off.png);
                 width: 40px;
-                height: 50px;
+                height: 40px;
                 float: left;
                 margin: 20px 5px 0 0;
             }
             #footer .column .social-twitter:hover {
                 background-image: url(img/soc_twitter_on.png);
+                height: 50px;
             }
             #footer .column .social-facebook {
                 background-image: url(img/soc_facebook_off.png);
                 width: 41px;
-                height: 50px;
+                height: 40px;
                 float: left;
                 margin-top: 20px;
             }
             #footer .column .social-facebook:hover {
                 background-image: url(img/soc_facebook_on.png);
+                height: 50px;
             }
 
 #four-oh-four {
@@ -244,4 +250,127 @@ body {
         position: absolute;
         top: 80px;
         right: 0px;
+    }
+
+.alert a {
+    font-weight: bold;
+    color: #B94A48;
+}
+
+label {
+    float: left;
+    width: 140px;
+    padding-top: 3px;
+}
+.radio-label {
+    float: left;
+    padding-top: 3px;
+    width: 60px;
+}
+    .radio-label input {
+        margin-top: -2px !important;
+    }
+.req {
+    color: #c00; 
+}
+/*----[ Caregivers Registeration Form ]---------------------------------------*/    
+#cntr-caregivers-registration-form {
+    overflow: auto;
+    margin-bottom: 30px;
+}
+    #cntr-caregivers-registration-form h4 {
+        margin-top: 30px;
+    }
+
+    #cntr-caregivers-registration-form .left {
+        width: 45%;
+        margin-right: 2%;
+        float: left;
+    }
+    #cntr-caregivers-registration-form .right {
+        width: 45%;
+        float: left;
+    }
+        #cntr-caregivers-registration-form .contact label {
+            width: 100px;
+        }
+        #cntr-caregivers-registration-form .contact input {
+            width: 160px;
+        }
+
+        #cntr-caregivers-registration-form .position label {
+            width: 260px;
+        }
+
+        #cntr-caregivers-registration-form .qualifications label {
+            width: 300px;
+        }
+
+        #cntr-caregivers-registration-form .where-heard label {
+            width: 155px;
+        }
+
+    #crf-qualifications {
+        width: 572px;
+    }
+
+    #cntr-caregivers-registration-form .where-heard.left {
+        width: 30%;
+        margin-right: 2%;
+        float: left;
+    }
+    #cntr-caregivers-registration-form .where-heard.right {
+        width: 60%;
+        float: left;
+    }
+
+/*----[ Family Registeration Form ]-------------------------------------------*/    
+#cntr-family-registration-form {
+    overflow: auto;
+    margin-bottom: 30px;
+}
+    #cntr-family-registration-form h4 {
+        margin-top: 30px;
+    }
+
+    #cntr-family-registration-form .left {
+        width: 45%;
+        margin-right: 2%;
+        float: left;
+    }
+    #cntr-family-registration-form .right {
+        width: 45%;
+        float: left;
+    }
+        #cntr-family-registration-form .contact label {
+            width: 100px;
+        }
+        #cntr-family-registration-form .contact input {
+            width: 160px;
+        }
+
+        #cntr-family-registration-form .requirements label {
+            width: 260px;
+        }
+
+        #cntr-family-registration-form .details label {
+            width: 260px;
+        }
+
+        #cntr-family-registration-form .where-heard label {
+            width: 155px;
+        }
+
+    #crf-qualifications {
+        width: 572px;
+    }
+
+    #cntr-family-registration-form .where-heard.left {
+        width: 30%;
+        margin-right: 2%;
+        float: left;
+    }
+    #cntr-family-registration-form .where-heard.right {
+        width: 60%;
+        float: left;
     }
