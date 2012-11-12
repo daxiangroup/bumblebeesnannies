@@ -251,6 +251,15 @@ body {
         top: 80px;
         right: 0px;
     }
+    #four-oh-four .description {
+        position: absolute;
+        width: 500px;
+        top: 340px;
+        right: 0px;
+    }
+        #four-oh-four .description a {
+            color: #b966a7;
+        }
 
 .alert a {
     font-weight: bold;
