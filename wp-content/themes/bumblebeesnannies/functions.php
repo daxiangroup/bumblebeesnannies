@@ -166,7 +166,7 @@ function bbn_tweets($num_to_get=5) {
 		}
 		$text = str_replace($find, $replace, $text);
 
-		echo '<div class="tweet">';
+		echo '<div class="tweet'.($i == ($num_to_get-1) ? ' last' : '').'">';
 		echo $text;
 		echo '	<div class="date">'.bbn_twitter_time(strtotime($tweet->created_at)).'</div>';
 		echo '</div>';
@@ -217,4 +217,8 @@ function bbn_twitter_time($original) {
     }
     }
     return $print;
+}
+
+function bbn_labels($which) {
+
 }

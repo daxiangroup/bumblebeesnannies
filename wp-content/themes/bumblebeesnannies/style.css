@@ -200,15 +200,18 @@ body {
 
         /*----[ Twitter ]----------------------------------------------*/
         #twitter {
+            margin-top: 25px;
         }
             #twitter .logo {
                 background-image: url(img/soc_twitter.png);
                 width: 48px;
-                height: 67px;
+                height: 44px;
+                margin-bottom: 8px;
             }
                 #twitter .logo a {
-                    margin: 20px 0 0 55px;
-                    padding-top: 20px;
+                    position: relative;
+                    top: 20px;
+                    left: 55px;
                 }
 
             #twitter .tweet, #twitter .date {
@@ -218,6 +221,9 @@ body {
             }
             #twitter .tweet {
                 border-bottom: solid 1px #eaeaea;
+            }
+            #twitter .tweet.last {
+                border-bottom: none;
             }
             #twitter .date {
                 text-align: right;
