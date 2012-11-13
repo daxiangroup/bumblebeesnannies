@@ -3,3 +3,6 @@ web1:
     - wp-content/writable
   php_extensions:
     - curl
+
+db1:
+  type: mysql
