@@ -158,12 +158,70 @@ body {
         width: 665px;
         margin-left: 22px;
         text-align: justify;
+        float: left;
     }
         #body img.alignleft {
             float: left;
             margin: 0 5px 4px 0;
         }
 
+    #sidebar {
+        float: right;
+        width: 200px;
+        margin: 10px 22px 0 0;
+    }
+        .callout-link {
+            color: #333;
+        }
+        .callout-link:hover {
+            text-decoration: none;
+        }
+        .callout {
+            background-image: url(img/callout_off.png);
+            width: 200px;
+            height: 60px;
+            margin-bottom: 10px;
+            font-family: Dosis;
+            font-weight: normal;
+            text-decoration: none;
+            text-align: center;
+        }
+        .callout:hover {
+            background-image: url(img/callout_on.png);
+            color: #fff;
+        }
+            .callout div {                
+                font-size: 18pt;
+                text-transform: uppercase;
+                text-shadow: 1px 1px 1px #333;
+                color: #fff;
+                padding-top: 10px;
+            }
+
+        /*----[ Twitter ]----------------------------------------------*/
+        #twitter {
+        }
+            #twitter .logo {
+                background-image: url(img/soc_twitter.png);
+                width: 48px;
+                height: 67px;
+            }
+                #twitter .logo a {
+                    margin: 20px 0 0 55px;
+                    padding-top: 20px;
+                }
+
+            #twitter .tweet, #twitter .date {
+                font-size: 10pt;
+                line-height: 18px;
+                margin-bottom: 10px;
+            }
+            #twitter .tweet {
+                border-bottom: solid 1px #eaeaea;
+            }
+            #twitter .date {
+                text-align: right;
+            }
 
 .entry-title, .entry-title a, #four-oh-four .tagline {
     font-family: Dosis;
@@ -174,11 +232,15 @@ body {
     text-shadow: 1px 1px 1px #000;
     color: #333;
 }
+.entry-title {
+    margin: 0px;
+}
 
 
 #footer {
     background-image: url(img/bg_footer.jpg);
     height: 240px;
+    clear: both;
 }
     #footer .wrapper {
         width: 896px;

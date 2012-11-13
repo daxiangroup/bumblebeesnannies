@@ -124,6 +124,11 @@
                     </div>
                     </form>
                 </div>
+
+                <div id="sidebar">
+                    <?php bbn_callouts(); ?>
+                    <?php bbn_labels('boutique-agency'); ?>
+                </div>
             </div>
         </div>
 <?php get_footer(); ?>
