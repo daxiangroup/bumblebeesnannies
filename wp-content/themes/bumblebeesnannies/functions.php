@@ -8,11 +8,11 @@ function get_page_number() {
 } // end get_page_number
 
 /*---------------------------------------------------------
- | register_my_menus()
+ | bbn_register_menus()
  |---------------------------------------------------------
  | Registering custom menu locations with the theme
  */
-function register_my_menus() {
+function bbn_register_menus() {
 	register_nav_menus(array(
 		'main-navigation' => __('Main Navigation'),
 		'footer-services' => __('Footer - Services'),
@@ -20,7 +20,6 @@ function register_my_menus() {
 		'footer-information' => __('Footer - Information'),
 	));
 }
-add_action('init', 'register_my_menus');
 
 /*---------------------------------------------------------
  | add_markup_pages()
@@ -33,47 +32,103 @@ function add_markup_pages($output) {
 	$output = substr_replace($output, "last-menu-item menu-item", strripos($output, "menu-item"), strlen("menu-item"));
     return $output;
 }
-add_filter('wp_nav_menu', 'add_markup_pages');
 
 /*---------------------------------------------------------
- | create_post_type()
+ | bbn_post_types()
  |---------------------------------------------------------
  | Creating custom post types for the Bumble Bees Nannies
  | system.
  */
-function create_post_type() {
-    register_post_type( 'families', array(
+function bbn_post_types() {
+    register_post_type('share_family', array(
         'labels' => array(
-            'name' => __( 'Families' ),
-            'singular_name' => __( 'Family' ),
-            'all_items' => __( 'All Family Posts' ),
+            'name' => __('Nanny Share - Families'),
+            'singular_name' => __('Nanny Share - Family'),
+            'all_items' => __('All Family Posts'),
         ),
         'public' => true,
         'has_archive' => true,
         'show_in_nav_menus' => true,
+        'capability_type' => 'post',
         'rewrite' => array(
+            'slug' => 'nanny-share/families',
             'with_front' => false,
         ),
-        'menu_position' => 5,
-    ));
-
-    register_post_type( 'caregivers', array(
-        'labels' => array(
-            'name' => __( 'Care Givers' ),
-            'singular_name' => __( 'Care Giver' ),
-            'all_items' => __( 'All Care Giver Posts' ),
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'show_in_nav_menus' => true,
-        'rewrite' => array(
-            'with_front' => false,
+        'supports' => array(
+            'title',
+            'mt'
         ),
         'menu_position' => 5,
     ));
 
 }
-//add_action( 'init', 'create_post_type' );
+
+function bbn_add_meta_boxes() {
+    // If the user is not logged in as an admin, end the function call.
+    if (!is_admin())
+        return false;
+
+    add_meta_box('nanny-share-family-section', 'Nanny Share - Family Details', 'bbn_meta_share_family', 'share_family', 'normal');
+    add_action('save_post', 'bbn_save_share_family', 10, 2);
+}
+    function bbn_meta_share_family($object, $box) {
+        require_once('includes/meta-share-family.php');
+    }
+
+    function bbn_save_share_family($post_id, $post) {
+        // Verify the nonce before proceeding.
+        if (!isset( $_POST['share-family-nonce']) || !wp_verify_nonce($_POST['share-family-nonce'], 'meta-share-family.php'))
+            return $post_id;
+
+        // Get the post type object.
+        $post_type = get_post_type_object($post->post_type);
+
+        // Check if the current user has permission to edit the post.
+        if (!current_user_can($post_type->cap->edit_post, $post_id))
+            return $post_id;
+
+        $meta_boxes = array(
+            'ns-family-type',
+            'ns-family-intersection',
+            'ns-family-start-month',
+            'ns-family-start-day',
+            'ns-family-start-year',
+            'ns-family-age',
+            'ns-family-days',
+            'ns-family-hours',
+        );
+
+        foreach ($meta_boxes AS $field) {
+            switch ($field) {
+                case 'ns-family-days':
+                    for ($i=1; $i<=7; $i++) {
+                        $parse[$i] = (isset($_POST[$field][$i]) ? $_POST[$field][$i] : '0');
+                    }
+                    $new_values[$field] = serialize($parse);
+                    break;
+                case 'ns-family-hours':
+                    $new_values[$field] = serialize(isset($_POST[$field]) ? $_POST[$field] : array());
+                    break;
+                default:
+                    $new_values[$field] = isset($_POST[$field]) ? sanitize_text_field($_POST[$field]) : '';
+                    break;
+            }
+            $old_values[$field] = get_post_meta($post_id, $field, true);
+
+            /* If a new meta value was added and there was no previous value, add it. */
+            if ($new_values[$field] && '' == $old_values[$field])
+                add_post_meta($post_id, $field, $new_values[$field], true);
+    
+            /* If the new meta value does not match the old value, update it. */
+            elseif ($new_values[$field] && $new_values[$field] != $old_values[$field] )
+                update_post_meta($post_id, $field, $new_values[$field]);
+
+            /* If there is no new meta value but an old value exists, delete it. */
+            elseif ('' == $new_values[$field] && $old_values[$field])
+                delete_post_meta($post_id, $field, $old_values[$field]);
+        }
+        //die('<pre>'.print_r($new_values,true).print_r($old_values,true).print_r($_POST,true));
+    }
 
 /*---------------------------------------------------------
  | bbn_enqueue_scripts()
@@ -83,9 +138,16 @@ function create_post_type() {
 function bbn_enqueue_scripts() {
     wp_enqueue_script('bbnmain', get_bloginfo('template_url').'/bbnmain.js', 'jquery', false, true);
     wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js');
-}
-add_action('wp_enqueue_scripts', 'bbn_enqueue_scripts');
+    wp_enqueue_script('bootstrap', '/js/bootstrap.min.js', 'jquery', false, true);
 
+    if (is_admin()) {
+        wp_enqueue_script('bbnadmin', get_bloginfo('template_url').'/bbnadmin.js', 'jquery', false, true);
+    }
+}
+
+function bbn_enqueue_styles() {
+    wp_enqueue_style('bbnadmin', get_bloginfo('template_url').'/bbnadmin.css');
+}
 
 function bbn_get_post($id, $item=null) {
     $post = get_post($id);
@@ -131,6 +193,13 @@ function bbn_callouts($which=null) {
 	</a>
 	<?php
 	}
+    if ($which == 'sidebar-tagline') {
+    ?>
+    <div class="tagline">
+        <?php bloginfo('description'); ?>
+    </div>
+    <?php
+    }
 }
 
 function bbn_tweets($num_to_get=5) {
@@ -222,3 +291,129 @@ function bbn_twitter_time($original) {
 function bbn_labels($which) {
 
 }
+
+function bbn_nanny_shares($nanny_shares) {
+    $i = 0;
+    while ($nanny_shares->have_posts()) {
+        $post = $nanny_shares->next_post();
+
+        $month = esc_attr(get_post_meta($post->ID, 'ns-family-start-month', true));
+        $day   = esc_attr(get_post_meta($post->ID, 'ns-family-start-day', true));
+        $year  = esc_attr(get_post_meta($post->ID, 'ns-family-start-year', true));
+        $date  = date("F d, Y", strtotime($year.'-'.$month.'-'.$day));
+        $days  = unserialize(get_post_meta($post->ID, 'ns-family-days', true));
+        $hours = unserialize(get_post_meta($post->ID, 'ns-family-hours', true));
+
+        $class = ($i%2 ? ' last' : '');
+        $i++;
+    ?>
+
+    <div id="nanny-share-family-<?php echo $post->ID; ?>" class="nanny-share-family">
+        <div class="sides clearfix">
+            <div class="left">
+                <div class="share-row">
+                    <div class="lbl">Family Number</div>
+                    <div class="fld"><?php echo $post->ID; ?></div>
+                </div>
+
+                <div class="share-row">
+                    <div class="lbl">Closest Intersection</div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'ns-family-intersection', true)); ?></div>
+                </div>
+
+                <div class="share-row full-row days">
+                    <div class="lbl">Days</div>
+                    <div class="day">Sun</div> <input type="checkbox"<?php echo ($days[1] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                    <div class="day">Mon</div> <input type="checkbox"<?php echo ($days[2] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                    <div class="day">Tue</div> <input type="checkbox"<?php echo ($days[3] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                    <div class="day">Wed</div> <input type="checkbox"<?php echo ($days[4] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;"><br />
+                    <div class="day">Thu</div> <input type="checkbox"<?php echo ($days[5] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                    <div class="day">Fri</div> <input type="checkbox"<?php echo ($days[6] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                    <div class="day">Sat</div> <input type="checkbox"<?php echo ($days[7] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                </div>
+            </div>
+            <div class="right">
+                <div class="share-row">
+                    <div class="lbl">Age of Child/ren</div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'ns-family-age', true)); ?></div>
+                </div>
+
+                <div class="share-row">
+                    <div class="lbl">Start Date</div>
+                    <div class="fld"><?php echo $date; ?></div>
+                </div>
+
+                <div class="share-row full-row hours">
+                    <div class="lbl">Hours</div>
+
+                    <?php if ($hours[1]) { ?>
+                    <div class="day">Sunday</div>
+                    <div class="hours"><?php echo $hours[1]; ?></div>
+                    <?php } ?>
+
+                    <?php if ($hours[2]) { ?>
+                    <div class="day">Monday</div>
+                    <div class="hours"><?php echo $hours[2]; ?></div>
+                    <?php } ?>
+
+                    <?php if ($hours[3]) { ?>
+                    <div class="day">Tuesday</div>
+                    <div class="hours"><?php echo $hours[3]; ?></div>
+                    <?php } ?>
+
+                    <?php if ($hours[4]) { ?>
+                    <div class="day">Wednesday</div>
+                    <div class="hours"><?php echo $hours[4]; ?></div>
+                    <?php } ?>
+
+                    <?php if ($hours[5]) { ?>
+                    <div class="day">Thursday</div>
+                    <div class="hours"><?php echo $hours[5]; ?></div>
+                    <?php } ?>
+
+                    <?php if ($hours[6]) { ?>
+                    <div class="day">Friday</div>
+                    <div class="hours"><?php echo $hours[6]; ?></div>
+                    <?php } ?>
+
+                    <?php if ($hours[7]) { ?>
+                    <div class="day">Saturday</div>
+                    <div class="hours"><?php echo $hours[7]; ?></div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn clearfix">I'm Interested In This Family</button>
+        </div>
+    </div>
+
+    <?php }
+
+    $big = 9999999999999;
+    
+    echo '<div class="controls">';
+    echo paginate_links(array(
+        'base' => str_replace( $big, '%#%', esc_url(get_pagenum_link($big))),
+        'format' => '?paged=%#%',
+        'total' => $nanny_shares->max_num_pages,
+        'current' => max(1, get_query_var('paged')),
+    ));
+    echo '</div>';
+}
+
+
+/*---------------------------------------------------------
+ | Hook Section
+ |---------------------------------------------------------
+ | Bottom of the theme functions.php, here is where we register all
+ | the hooks for the theme.
+ */
+add_action('init',               'bbn_register_menus');
+add_action('init',               'bbn_post_types');
+add_action('wp_enqueue_scripts', 'bbn_enqueue_scripts');
+add_filter('wp_nav_menu',        'add_markup_pages');
+add_action('admin_menu',         'bbn_add_meta_boxes');
+add_action('admin_menu',         'bbn_enqueue_styles');
+add_action('admin_menu',         'bbn_enqueue_scripts');

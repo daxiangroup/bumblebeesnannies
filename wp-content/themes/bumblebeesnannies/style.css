@@ -197,6 +197,10 @@ body {
                 color: #fff;
                 padding-top: 10px;
             }
+        .tagline {
+            text-align: center;
+            text-transform: uppercase;
+        }
 
         /*----[ Twitter ]----------------------------------------------*/
         #twitter {
@@ -451,3 +455,66 @@ label {
         width: 60%;
         float: left;
     }
+
+/*----[ Nanny Share Families ]------------------------------------------------*/
+.nanny-share-family {
+    margin-bottom: 2em;
+    overflow: auto;
+}
+    .nanny-share-family .sides {
+        margin-bottom: 1em;   
+    }
+        .nanny-share-family .left {
+            float: left;
+            width: 48%;
+            margin-right: 1%;
+        }
+        .nanny-share-family .right {
+            float: left;
+            width: 48%;
+            margin-left: 1%;
+        }
+    .controls {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+        .controls button {
+            margin-right: .5em;
+        }
+
+    .share-row {
+        clear: both;
+    }
+        .share-row .lbl {
+            float: left;
+            width: 140px;
+            font-weight: bold;
+        }
+        .share-row.full-row .lbl {
+            float: none;
+        }
+        .share-row.full-row.days, .share-row.full-row.hours {
+            padding-left: 10px;
+        }
+            .share-row.full-row.days .lbl, .share-row.full-row.hours .lbl {
+                margin-left: -10px;
+            }
+        .share-row.full-row.days div.day {
+            float: left;
+            width: 35px;
+        }
+        .share-row.days input[type="checkbox"] {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .share-row.full-row.hours div.day {
+            float: left;
+            width: 60px;
+        }
+        .share-row.full-row.hours div.hours {
+            width: 100%;
+        }
+        .share-row .fld {
+            overflow:auto;
+        }
