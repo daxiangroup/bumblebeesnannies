@@ -127,7 +127,7 @@
 
                 <div id="sidebar">
                     <?php bbn_callouts(); ?>
-                    <?php bbn_labels('boutique-agency'); ?>
+                    <?php bbn_callouts('sidebar-tagline'); ?>
                 </div>
             </div>
         </div>

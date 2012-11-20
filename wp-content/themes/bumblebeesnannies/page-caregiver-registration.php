@@ -138,6 +138,11 @@
                     </div>
                     </form>
                 </div>
+                
+                <div id="sidebar">
+                    <?php bbn_callouts(); ?>
+                    <?php bbn_callouts('sidebar-tagline'); ?>
+                </div>
             </div>
         </div>
 <?php get_footer(); ?>
