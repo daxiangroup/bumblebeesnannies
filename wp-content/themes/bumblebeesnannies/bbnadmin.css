@@ -1,0 +1,46 @@
+#nanny-share-family-section {}
+    #nanny-share-family-section div {
+        margin: 1em 0;
+    }
+    #nanny-share-family-section label {
+        width: 200px;
+        clear: right;
+    }
+    #nanny-share-family-section input[type="text"] {
+        padding: 3px 8px;
+        line-height: 100%;
+        width: 100%;
+        outline: 0;
+        font-family: Consolas,Monaco,monospace;
+    }
+    #nanny-share-family-section select {
+        padding: 2px;
+        height: 2em;        
+    }
+    #nanny-share-family-section input[type="radio"], #nanny-share-family-section input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    #nanny-share-family-section label.radio, #nanny-share-family-section label.checkbox {
+        margin-right: 20px;
+    }
+    .day-input {
+        overflow: auto;
+    }
+        .day-input div {
+            clear: both;
+            overflow: auto;
+            margin: 0px !important;
+            display: none;
+        }
+            .day-input div.select-day-message {
+                display: block;
+            }
+        .day-input label {
+            padding-top: 4px;
+            float: left;
+            width: 100px !important;
+        }
+        .day-input input[type="text"] {
+            width: 400px !important;
+            float: left;
+        }
