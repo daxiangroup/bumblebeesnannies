@@ -385,7 +385,7 @@ function bbn_nanny_shares($nanny_shares) {
         </div>
 
         <div class="controls">
-            <button class="btn clearfix">I'm Interested In This Family</button>
+            <button class="btn interested-family" data-family-id="<?php echo $post->ID; ?>">I'm Interested In This Family</button>
         </div>
     </div>
 
@@ -401,6 +401,20 @@ function bbn_nanny_shares($nanny_shares) {
         'current' => max(1, get_query_var('paged')),
     ));
     echo '</div>';
+}
+
+function bbn_check_active_family($fid) {
+    $nanny_shares = new WP_query(array(
+        'p' => $fid,                                 
+        'post_type' => 'share_family',
+        'post_status' => 'publish',
+    ));
+
+    if (!$nanny_shares->have_posts()) {
+        return false;
+    }
+
+    return $nanny_shares;
 }
 
 

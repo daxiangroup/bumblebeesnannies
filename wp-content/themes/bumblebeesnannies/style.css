@@ -464,15 +464,21 @@ label {
     .nanny-share-family .sides {
         margin-bottom: 1em;   
     }
-        .nanny-share-family .left {
+        .nanny-share-family .left, #cntr-ns-contact-form .left {
             float: left;
             width: 48%;
             margin-right: 1%;
         }
-        .nanny-share-family .right {
+        .nanny-share-family .right, #cntr-ns-contact-form .right {
             float: left;
             width: 48%;
             margin-left: 1%;
+        }
+        #cntr-ns-contact-form input[type="text"] {
+            width: 165px;
+        }
+        #cntr-ns-contact-form .controls {
+            margin-top: 2em;
         }
     .controls {
         text-align: center;
@@ -517,4 +523,36 @@ label {
         }
         .share-row .fld {
             overflow:auto;
+        }
+
+    #ns-start-month, #ns-start-day, #ns-start-year {
+        float: left;
+        margin-right: 10px;
+    }
+    #ns-start-month {
+        width: 120px;
+    }
+    #ns-start-day {
+        width: 60px;
+    }
+    #ns-start-year {
+        width: 80px;
+    }
+    .field.days label, .field.hours label {
+        width: 75px;
+        float: left;
+        padding: 0px;
+    }
+    .field.days input[type="checkbox"] {
+        float: left;
+        margin-right: 5px;
+    }
+        #days-1 {
+            margin-left: 10px;
+        }
+    .field.hours div {
+        display: none;
+    }
+        .field.hours label {
+            margin-left: 10px;
         }

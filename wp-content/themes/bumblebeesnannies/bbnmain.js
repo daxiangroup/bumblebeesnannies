@@ -6,7 +6,78 @@ jQuery(document).ready(function() {
     jQuery('#frm-family-registration').submit(function() {
         return family_validation();
     });
+
+    jQuery('#frm-ns-contact').submit(function() {
+        return ns_contact_validation();
+    });
+
+    init_share_buttons();
+    init_contact_toggles();
 });
+
+function ns_contact_validation() {
+    var retval = true;
+    var messages = [];
+
+    jQuery('#cntr-ns-contact-form .required').each(function() {
+        if (jQuery(this).val() == '') {
+            messages.push('The <a href="#section-' + jQuery(this).data('section') + '">' + jQuery(this).data('label') + '</a> field is required');
+            retval = false;
+        }
+    });
+
+    if (jQuery('#ns-start-month').val() == '' || jQuery('#ns-start-day').val() == '' || jQuery('#ns-start-year').val() == '') {
+        messages.push('The <a href="#section-contact">Start Date</a> must be selected in full');
+        retval = false;
+    }
+
+    if (!jQuery('#days-1').prop('checked') && !jQuery('#days-2').prop('checked') && !jQuery('#days-3').prop('checked') &&
+        !jQuery('#days-4').prop('checked') && !jQuery('#days-5').prop('checked') && !jQuery('#days-6').prop('checked') &&
+        !jQuery('#days-7').prop('checked')
+    ) {
+        messages.push('One of the <a href="#section-contact">Days</a> are required');
+        retval = false;
+    }
+
+    if ((jQuery('#days-1').prop('checked') && jQuery('#ns-hours-1').val() == '') ||
+        (jQuery('#days-2').prop('checked') && jQuery('#ns-hours-2').val() == '') ||
+        (jQuery('#days-3').prop('checked') && jQuery('#ns-hours-3').val() == '') ||
+        (jQuery('#days-4').prop('checked') && jQuery('#ns-hours-4').val() == '') ||
+        (jQuery('#days-5').prop('checked') && jQuery('#ns-hours-5').val() == '') ||
+        (jQuery('#days-6').prop('checked') && jQuery('#ns-hours-6').val() == '') ||
+        (jQuery('#days-7').prop('checked') && jQuery('#ns-hours-7').val() == '')
+    ) {
+        messages.push('<a href="#section-contact">Hours</a> must be supplied for selected Days');
+        retval = false;
+    }
+
+
+    if (!retval) {
+        // Initialize grammar to have one error.
+        var grammar = 'an error';
+        // If there is more than one error, change the grammar to fit multiple
+        // errors.
+        if (messages.length > 1) {
+            grammar = 'some errors';
+        }
+
+        // Create the output that will be prepended to the #body div
+        var output = '<div id="form-error-messages" class="alert alert-error"> \
+            <strong>Warning!</strong> There seems to be ' + grammar + ' with your submission:<br /><br /> \
+            <ul>';
+        jQuery.each(messages, function(index, value) {
+            output += '<li>' + value + '</li>';
+        });
+        output += '<ul></div>';
+
+        // Output the actual error messages
+        jQuery('#form-error-messages').remove();
+        jQuery('#body').prepend(output);
+        jQuery('html, body').animate({ scrollTop: 0 });
+    }
+
+    return retval;        
+}
 
 function caregiver_validation() {
     var retval = true;
@@ -146,3 +217,40 @@ function family_validation() {
 
     return retval;    
 }
+
+function init_share_buttons() {
+    jQuery('.nanny-share-families-looking .interested-family').each(function() {
+        jQuery(this).click(function() {
+            var current_location = String(document.location).split('/');
+            current_location[(current_location.length-2)] = 'contact-family';
+            current_location = current_location.join('/');
+            document.location.href = current_location + '?fid=' + jQuery(this).data('family-id');
+        });
+    });
+
+}
+
+function init_contact_toggles() {
+    jQuery('div.field.days input[type="checkbox"]').each(function() {
+        var src = jQuery(this);
+        var dst = jQuery('#' + src.data('input'));
+
+        src.click(function() {
+            dst.toggle();
+            if (!dst.is(':visible')) {
+                dst.find('input[type="text"]').val('');
+            }
+        });
+        if (src.is(':checked')) {
+            dst.toggle();            
+        }
+    });
+
+}
+
+
+
+
+
+
+
