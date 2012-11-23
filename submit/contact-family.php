@@ -44,7 +44,7 @@
     $body .= PHP_EOL;
 
     $body .= '--PHP-alt-'.$random_hash.'--'.PHP_EOL;
-die('<pre>'.$body);
+
     $mail_sent = mail('ts@daxiangroup.com', 'test message', $body, $headers ); 
     
     header('Location: /bumblebees/thank-you');
