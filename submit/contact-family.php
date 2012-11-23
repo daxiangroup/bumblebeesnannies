@@ -34,13 +34,13 @@
     $body .= SPACER.str_pad('Age of Children: ', PAD).$_POST['ns-age'].PHP_EOL;
     $body .= PHP_EOL;
     $body .= 'Days / Hours'.PHP_EOL;
-    $body .= SPACER.str_pad('Sunday', PAD).'['.($_POST['ns-days'][1] ? 'X' : ' ').'] '.$_POST['ns-hours'][1].PHP_EOL;
-    $body .= SPACER.str_pad('Monday', PAD).'['.($_POST['ns-days'][2] ? 'X' : ' ').'] '.$_POST['ns-hours'][2].PHP_EOL;
-    $body .= SPACER.str_pad('Tuesday', PAD).'['.($_POST['ns-days'][3] ? 'X' : ' ').'] '.$_POST['ns-hours'][3].PHP_EOL;
-    $body .= SPACER.str_pad('Wednesday', PAD).'['.($_POST['ns-days'][4] ? 'X' : ' ').'] '.$_POST['ns-hours'][4].PHP_EOL;
-    $body .= SPACER.str_pad('Thursday', PAD).'['.($_POST['ns-days'][5] ? 'X' : ' ').'] '.$_POST['ns-hours'][5].PHP_EOL;
-    $body .= SPACER.str_pad('Friday', PAD).'['.($_POST['ns-days'][6] ? 'X' : ' ').'] '.$_POST['ns-hours'][6].PHP_EOL;
-    $body .= SPACER.str_pad('Saturday', PAD).'['.($_POST['ns-days'][7] ? 'X' : ' ').'] '.$_POST['ns-hours'][7].PHP_EOL;
+    $body .= SPACER.str_pad('Sunday', PAD).'['.(isset($_POST['ns-days'][1]) ? 'X' : ' ').'] '.$_POST['ns-hours'][1].PHP_EOL;
+    $body .= SPACER.str_pad('Monday', PAD).'['.(isset($_POST['ns-days'][2]) ? 'X' : ' ').'] '.$_POST['ns-hours'][2].PHP_EOL;
+    $body .= SPACER.str_pad('Tuesday', PAD).'['.(isset($_POST['ns-days'][3]) ? 'X' : ' ').'] '.$_POST['ns-hours'][3].PHP_EOL;
+    $body .= SPACER.str_pad('Wednesday', PAD).'['.(isset($_POST['ns-days'][4]) ? 'X' : ' ').'] '.$_POST['ns-hours'][4].PHP_EOL;
+    $body .= SPACER.str_pad('Thursday', PAD).'['.(isset($_POST['ns-days'][5]) ? 'X' : ' ').'] '.$_POST['ns-hours'][5].PHP_EOL;
+    $body .= SPACER.str_pad('Friday', PAD).'['.(isset($_POST['ns-days'][6]) ? 'X' : ' ').'] '.$_POST['ns-hours'][6].PHP_EOL;
+    $body .= SPACER.str_pad('Saturday', PAD).'['.(isset($_POST['ns-days'][7]) ? 'X' : ' ').'] '.$_POST['ns-hours'][7].PHP_EOL;
     $body .= PHP_EOL;
 
     $body .= '--PHP-alt-'.$random_hash.'--'.PHP_EOL;
