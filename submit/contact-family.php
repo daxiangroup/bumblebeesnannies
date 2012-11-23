@@ -5,10 +5,12 @@
 
     $random_hash = md5(date('r', time()));
 
+    /*
     echo '<pre>';
     print_r($_POST);
     print_r($_SERVER);
     echo '</pre>';
+    */
 
     $headers  = "From: web@bumblebeesnannies.com";
     $headers .= "\r\nReply-To: web@bumblebeesnannies.com"; 
