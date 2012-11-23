@@ -13,7 +13,20 @@ jQuery(document).ready(function() {
 
     init_share_buttons();
     init_contact_toggles();
+    reset_submenus();
 });
+
+function reset_submenus() {
+    var i = 1;
+    jQuery('#menu-main-navigation > li').each(function() {
+        jQuery(this).addClass('menu-item-position-' + i);
+        i += 1;
+    });
+
+    jQuery('#menu-main-navigation ul.sub-menu').each(function() {
+        jQuery(this).find('li').first().addClass('first-menu-item');
+    });
+}
 
 function ns_contact_validation() {
     var retval = true;

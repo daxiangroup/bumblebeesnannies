@@ -1,5 +1,6 @@
+<?php bbn_slug_classes(); ?>
 <?php get_header(); ?>
-        <div id="container">
+        <div id="container" class="<?php echo bbn_slug_classes(); ?>">
             <div id="content">
                 <div id="body">
 
@@ -9,8 +10,13 @@
                 </div>
 
                 <div id="sidebar">
-                    <?php bbn_callouts(); ?>
-                    <?php bbn_callouts('sidebar-tagline'); ?>
+                    <?php
+                    bbn_callouts();
+                    bbn_callouts('sidebar-tagline');
+                    bbn_callouts('filler-image');
+                    bbn_labels('Recent Blogs');
+                    bbn_callouts('recent-blogs');
+                    ?>
                 </div>
             </div>
         </div>

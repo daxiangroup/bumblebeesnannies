@@ -149,6 +149,11 @@ function bbn_enqueue_styles() {
     wp_enqueue_style('bbnadmin', get_bloginfo('template_url').'/bbnadmin.css');
 }
 
+function bbn_slug_classes() {
+	$classes = str_replace('/', ' ', substr($_SERVER['REQUEST_URI'], 1));
+	return trim($classes);
+}
+
 function bbn_get_post($id, $item=null) {
     $post = get_post($id);
 
@@ -199,6 +204,19 @@ function bbn_callouts($which=null) {
         <?php bloginfo('description'); ?>
     </div>
     <?php
+    }
+    if ($which == 'recent-blogs') {
+	    $recent_blogs = new WP_query();
+	    $recent_blogs->query('showposts=5');
+
+	    echo '<ul>';
+	    while ($recent_blogs->have_posts()) : $recent_blogs->the_post();
+	    	?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
+	    endwhile;
+	    echo '</ul>';
+    }
+    if ($which == 'filler-image') {
+		echo '<div class="filler-image"></div>';
     }
 }
 
@@ -289,7 +307,7 @@ function bbn_twitter_time($original) {
 }
 
 function bbn_labels($which) {
-
+	echo '<div class="sidebar-label">'.$which.'</div>';
 }
 
 function bbn_nanny_shares($nanny_shares) {

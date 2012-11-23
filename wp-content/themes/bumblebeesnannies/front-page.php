@@ -15,6 +15,7 @@
 
 		<div id="sidebar">
 			<?php bbn_callouts(); ?>
+			<?php bbn_labels('recent-tweets'); ?>
 			<div id="twitter">
 				<div class="logo">
 					<a href="http://www.twitter.com" target="_blank">@BumbleBeesNanny</a>
