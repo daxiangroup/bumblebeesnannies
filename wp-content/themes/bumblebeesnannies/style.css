@@ -616,3 +616,32 @@ label {
         .field.hours label {
             margin-left: 10px;
         }
+
+/*----[ Contact ]-------------------------------------------------------------*/
+#cntr-contact-info {
+    float: left;
+    margin-right: 15px;
+}
+
+#cntr-map {
+    float: left;
+    width: 475px;
+    height: 300px;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;    
+    margin-bottom: 20px;
+}
+
+#frm-contact {
+    clear: both;
+}
+
+#container.contact input[type="text"] {
+    width: 300px; 
+}
+#container.contact textarea {
+    width: 505px;
+    height: 100px;
+}

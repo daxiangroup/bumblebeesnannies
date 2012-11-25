@@ -1,4 +1,3 @@
-<?php bbn_slug_classes(); ?>
 <?php get_header(); ?>
         <div id="container" class="<?php echo bbn_slug_classes(); ?>">
             <div id="content">

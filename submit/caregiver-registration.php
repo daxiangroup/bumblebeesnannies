@@ -1,25 +1,14 @@
 <?php
-    define('SPACER', '   ');
-    define('PAD', 16);
-    define('POS_PAD', 28);
-    define('QUAL_PAD', 24);
-    define('HEARD_PAD', 28);
+    requre_once('common.inc.php');
 
-    $random_hash = md5(date('r', time()));
-
-    /*
-    echo '<pre>';
-    print_r($_POST);
-    print_r($_FILES);
-    echo '</pre>';
-    */
+    sanitize_post('caregiver-registration');
 
     $headers  = "From: web@bumblebeesnannies.com";
     $headers .= "\r\nReply-To: web@bumblebeesnannies.com"; 
-    $headers .= "\r\nContent-Type: multipart/mixed; boundary=\"PHP-mixed-".$random_hash."\""; 
+    $headers .= "\r\nContent-Type: multipart/mixed; boundary=\"PHP-mixed-".RANDOM_HASH."\""; 
 
     $body = '';
-    $body .= '--PHP-alt-'.$random_hash.PHP_EOL;
+    $body .= '--PHP-alt-'.RANDOM_HASH.PHP_EOL;
     $body .= 'Content-Type: text/plain; charset="iso-8859-1"'.PHP_EOL;
     $body .= 'Content-Transfer-Encoding: 7bit'.PHP_EOL;
 
@@ -61,17 +50,17 @@
     $body .= SPACER.str_pad('Recommendation', HEARD_PAD).$_POST['crf-recommendation'].PHP_EOL;
     $body .= SPACER.str_pad('Other', HEARD_PAD).$_POST['crf-other'].PHP_EOL;
 
-    $body .= '--PHP-alt-'.$random_hash.'--'.PHP_EOL;
+    $body .= '--PHP-alt-'.RANDOM_HASH.'--'.PHP_EOL;
 
     $attachment = chunk_split(base64_encode(file_get_contents($_FILES['crf-resume']['tmp_name'])));
-    $body .= '--PHP-mixed-'.$random_hash.PHP_EOL;
+    $body .= '--PHP-mixed-'.RANDOM_HASH.PHP_EOL;
     $body .= 'Content-Type: application/zip; name="attachment.zip"'.PHP_EOL;
     $body .= 'Content-Transfer-Encoding: base64'.PHP_EOL;
     $body .= 'Content-Disposition: attachment'.PHP_EOL;
     $body .= $attachment;
-    $body .= '--PHP-mixed-'.$random_hash.'--'.PHP_EOL;
+    $body .= '--PHP-mixed-'.RANDOM_HASH.'--'.PHP_EOL;
 
-    $mail_sent = mail('ts@daxiangroup.com', 'test message', $body, $headers ); 
+    $mail_sent = mail(RICHELLE, 'Caregiver Registration', $body, $headers);
     
-    header('Location: /bumblebees/thank-you');
+    header('Location: '.THANK_YOU_PAGE);
     die();
