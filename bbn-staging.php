@@ -2,7 +2,7 @@
     $conn = mysql_connect($_ENV['BBN_DB_ENV_HOST'], $_ENV['BBN_DB_ENV_USER'], $_ENV['BBN_DB_ENV_PASSWORD'], $_ENV['BBN_DB_ENV_NAME'])
         or die('Couldn\'t connect to database: '.mysql_error());
 
-    $sql = "UPDATE bumblebeesnannies.bbnoptions
+    $sql = "UPDATE ".$_ENV['BBN_DB_ENV_NAME'].".bbnoptions
             SET option_value = 'http://bumblebees.lab.daxiangroup.com/'
             WHERE option_name IN ('siteurl', 'home')";
 
