@@ -4,8 +4,8 @@ web1:
   php_extensions:
     - curl
     - mysql
-  after_deploy:
-    - "php bbn-staging.php"
+#  after_deploy:
+#    - "php bbn-staging.php"
 
 db1:
   type: mysql
