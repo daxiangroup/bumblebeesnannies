@@ -4,7 +4,7 @@ web1:
   php_extensions:
     - curl
     - mysql
-  before_deploy:
+  after_deploy:
     - "php bbn-staging.php"
 
 db1:
