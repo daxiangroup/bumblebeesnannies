@@ -520,6 +520,11 @@ label {
 .nanny-share-family {
     margin-bottom: 2em;
     overflow: auto;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px;
 }
     .nanny-share-family .sides {
         margin-bottom: 1em;   
@@ -576,7 +581,7 @@ label {
 
         .share-row.full-row.hours div.day {
             float: left;
-            width: 60px;
+            width: 80px;
         }
         .share-row.full-row.hours div.hours {
             width: 100%;
