@@ -115,6 +115,7 @@ body {
                 list-style: none;
                 margin: 0 21px 0 0;
                 padding: 8px 0 0 25px;
+                z-index: 100;
             }
                 #access li.first-menu-item {
                     margin-left: -4px;
@@ -128,9 +129,14 @@ body {
                 padding: 0px;
                 min-width: 132px;
                 min-height: 36px;
+                z-index: 1000;
             }
                 #access li:hover .sub-menu, #access li.current-menu-item .sub-menu, #access li.current-page-ancestor .sub-menu {
                     display: block;
+                    z-index: 100;
+                }
+                #access li:hover .sub-menu {
+                    z-index: 1000;
                 }
             #contact li:hover {
                 padding: 8px 0 0 25px;
