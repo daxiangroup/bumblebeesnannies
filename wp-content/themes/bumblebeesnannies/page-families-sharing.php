@@ -14,7 +14,7 @@
                         'meta_value' => '1',
                         'orderby' => 'id',
                         'order' => 'DESC',
-                        'posts_per_page' => 1,
+                        'posts_per_page' => POSTS_PER_PAGE,
                         'paged' => $paged,
                     ));
 

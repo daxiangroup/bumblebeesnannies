@@ -14,7 +14,7 @@
                         'meta_value' => '2',
                         'orderby' => 'id',
                         'order' => 'DESC',
-                        'posts_per_page' => 1,
+                        'posts_per_page' => POSTS_PER_PAGE,
                         'paged' => $paged,
                     ));
 
@@ -24,8 +24,13 @@
                 </div>
 
                 <div id="sidebar">
-                    <?php bbn_callouts(); ?>
-                    <?php bbn_callouts('sidebar-tagline'); ?>
+                    <?php
+                    bbn_callouts();
+                    bbn_callouts('sidebar-tagline');
+                    bbn_callouts('filler-image');
+                    bbn_labels('Recent Blogs');
+                    bbn_callouts('recent-blogs');
+                    ?>
                 </div>
             </div>
         </div>
