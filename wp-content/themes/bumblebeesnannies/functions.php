@@ -1,4 +1,7 @@
 <?php
+define('POSTS_PER_PAGE', 2);
+define('JOB_POSTS_PER_PAGE', 5);
+
 
 // Get the page number
 function get_page_number() {
@@ -40,6 +43,7 @@ function add_markup_pages($output) {
  | system.
  */
 function bbn_post_types() {
+    // Nanny Share
     register_post_type('share_family', array(
         'labels' => array(
             'name' => __('Nanny Share - Families'),
@@ -61,6 +65,26 @@ function bbn_post_types() {
         'menu_position' => 5,
     ));
 
+    // Job Vacancies
+    register_post_type('job_vacancy', array(
+        'labels' => array(
+            'name' => __('Job Vacancies'),
+            'singular_name' => __('Job Vacancy'),
+            'all_items' => __('All Job Vacancies'),
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_nav_menus' => true,
+        'capability_type' => 'post',
+        'rewrite' => array(
+            'with_front' => false,
+        ),
+        'supports' => array(
+            'title',
+            'mt',
+        ),
+        'menu_position' => 6,
+    ));
 }
 
 function bbn_add_meta_boxes() {
@@ -68,8 +92,13 @@ function bbn_add_meta_boxes() {
     if (!is_admin())
         return false;
 
+    // Nanny Share
     add_meta_box('nanny-share-family-section', 'Nanny Share - Family Details', 'bbn_meta_share_family', 'share_family', 'normal');
     add_action('save_post', 'bbn_save_share_family', 10, 2);
+
+    // Job Vacancies
+    add_meta_box('job-vacancy-section', 'Job Vacancy', 'bbn_meta_job_vacancy', 'job_vacancy', 'normal');
+    add_action('save_post', 'bbn_save_job_vacancy', 10, 2);
 }
     function bbn_meta_share_family($object, $box) {
         require_once('includes/meta-share-family.php');
@@ -127,7 +156,68 @@ function bbn_add_meta_boxes() {
             elseif ('' == $new_values[$field] && $old_values[$field])
                 delete_post_meta($post_id, $field, $old_values[$field]);
         }
-        //die('<pre>'.print_r($new_values,true).print_r($old_values,true).print_r($_POST,true));
+    }
+
+    function bbn_meta_job_vacancy($object, $box) {
+        require_once('includes/meta-job-vacancy.php');
+    }
+
+    function bbn_save_job_vacancy($post_id, $post) {
+        // Verify the nonce before proceeding.
+        if (!isset( $_POST['job-vacancy-nonce']) || !wp_verify_nonce($_POST['job-vacancy-nonce'], 'meta-job-vacancy.php'))
+            return $post_id;
+
+        // Get the post type object.
+        $post_type = get_post_type_object($post->post_type);
+
+        // Check if the current user has permission to edit the post.
+        if (!current_user_can($post_type->cap->edit_post, $post_id))
+            return $post_id;
+
+        $meta_boxes = array(
+            'jv-type',
+            'jv-position',
+            'jv-start-month',
+            'jv-start-day',
+            'jv-start-year',
+            'jv-location',
+            'jv-hours',
+            'jv-salary',
+            'jv-num-children',
+            'jv-qualifications',
+            'jv-responsibilities',
+            'jv-expectations',
+        );
+
+        foreach ($meta_boxes AS $field) {
+            switch ($field) {
+                case 'ns-family-days':
+                    for ($i=1; $i<=7; $i++) {
+                        $parse[$i] = (isset($_POST[$field][$i]) ? $_POST[$field][$i] : '0');
+                    }
+                    $new_values[$field] = serialize($parse);
+                    break;
+                case 'ns-family-hours':
+                    $new_values[$field] = serialize(isset($_POST[$field]) ? $_POST[$field] : array());
+                    break;
+                default:
+                    $new_values[$field] = isset($_POST[$field]) ? sanitize_text_field($_POST[$field]) : '';
+                    break;
+            }
+            $old_values[$field] = get_post_meta($post_id, $field, true);
+
+            /* If a new meta value was added and there was no previous value, add it. */
+            if ($new_values[$field] && '' == $old_values[$field])
+                add_post_meta($post_id, $field, $new_values[$field], true);
+    
+            /* If the new meta value does not match the old value, update it. */
+            elseif ($new_values[$field] && $new_values[$field] != $old_values[$field] )
+                update_post_meta($post_id, $field, $new_values[$field]);
+
+            /* If there is no new meta value but an old value exists, delete it. */
+            elseif ('' == $new_values[$field] && $old_values[$field])
+                delete_post_meta($post_id, $field, $old_values[$field]);
+        }
     }
 
 /*---------------------------------------------------------
@@ -433,6 +523,108 @@ function bbn_check_active_family($fid) {
     }
 
     return $nanny_shares;
+}
+
+function bbn_job_vacancies($job_vacancies) {
+    if (!$job_vacancies->post_count) {
+        switch ($job_vacancies->query_vars['meta_value']) {
+            case 1: $type = 'Full Time'; break;
+            case 2: $type = 'Part Time'; break;
+            case 3: $type = 'After School Care'; break;
+            case 4: $type = 'Mother\'s Help'; break;
+        }
+
+        echo '<div class="centered">There are currently no <strong>'.$type.'</strong> Job Vacancies</div>';
+        return;
+    }
+    while ($job_vacancies->have_posts()) {
+        $post = $job_vacancies->next_post();
+
+        $month = esc_attr(get_post_meta($post->ID, 'jv-start-month', true));
+        $day   = esc_attr(get_post_meta($post->ID, 'jv-start-day', true));
+        $year  = esc_attr(get_post_meta($post->ID, 'jv-start-year', true));
+        $date  = date("F d, Y", strtotime($year.'-'.$month.'-'.$day));
+    ?>
+
+    <div id="job-vacancy-<?php echo $post->ID; ?>" class="job-vacancy">
+        <div class="sides clearfix">
+            <div class="left">
+                <div class="job-row">
+                    <div class="lbl">Family Number</div>
+                    <div class="fld"><?php echo $post->ID; ?></div>
+                </div>
+
+                <div class="job-row">
+                    <div class="lbl">Position</div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-position', true)); ?></div>
+                </div>
+
+                <div class="job-row">
+                    <div class="lbl">Start Date</div>
+                    <div class="fld"><?php echo $date; ?></div>
+                </div>
+
+                <div class="job-row">
+                    <div class="lbl">Location</div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-location', true)); ?></div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="job-row">
+                    <div class="lbl"></div>
+                    <div class="fld">&nbsp;</div>
+                </div>
+
+                <div class="job-row">
+                    <div class="lbl">Hours</div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-hours', true)); ?></div>
+                </div>
+
+                <div class="job-row">
+                    <div class="lbl">Salary/Wages</div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-salary', true)); ?></div>
+                </div>
+
+                <div class="job-row">
+                    <div class="lbl">Children</div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-num-children', true)); ?></div>
+                </div>
+            </div>
+
+            <div class="job-row full-row">
+                <div class="lbl">Qualifications Needed</div>
+                <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-qualifications', true)); ?></div>
+            </div>
+
+            <div class="job-row full-row">
+                <div class="lbl">Responsibilities</div>
+                <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-responsibilities', true)); ?></div>
+            </div>
+
+            <div class="job-row full-row">
+                <div class="lbl">Expectations</div>
+                <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-expectations', true)); ?></div>
+            </div>
+
+        </div>
+
+        <div class="controls">
+            <button class="btn interested-job" data-job-id="<?php echo $post->ID; ?>">I'm Interested In This Job</button>
+        </div>
+    </div>
+
+    <?php }
+
+    $big = 9999999999999;
+    
+    echo '<div class="controls">';
+    echo paginate_links(array(
+        'base' => str_replace( $big, '%#%', esc_url(get_pagenum_link($big))),
+        'format' => '?paged=%#%',
+        'total' => $job_vacancies->max_num_pages,
+        'current' => max(1, get_query_var('paged')),
+    ));
+    echo '</div>';
 }
 
 
