@@ -2,7 +2,7 @@
 
 <div id="#container">
 	<div id="content">
-		<div id="impact">
+		<div id="impact" class="impact-<?php echo rand(1,4); ?>">
 			<div id="tagline"><?php bloginfo( 'description' ) ?></div>
 		</div>
 
@@ -18,7 +18,7 @@
 			<?php bbn_labels('recent-tweets'); ?>
 			<div id="twitter">
 				<div class="logo">
-					<a href="http://www.twitter.com" target="_blank">@BumbleBeesNanny</a>
+					<a href="http://www.twitter.com/BumbleBeesNanny" target="_blank">@BumbleBeesNanny</a>
 				</div>
 				<?php bbn_tweets(3); ?>
 			</div>

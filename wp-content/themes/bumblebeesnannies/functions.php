@@ -299,7 +299,7 @@ function bbn_callouts($which=null) {
 	    $recent_blogs = new WP_query();
 	    $recent_blogs->query('showposts=5');
 
-	    echo '<ul>';
+	    echo '<ul class="recent-blogs">';
 	    while ($recent_blogs->have_posts()) : $recent_blogs->the_post();
 	    	?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
 	    endwhile;
@@ -590,22 +590,21 @@ function bbn_job_vacancies($job_vacancies) {
                     <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-num-children', true)); ?></div>
                 </div>
             </div>
+	    </div>
 
-            <div class="job-row full-row">
-                <div class="lbl">Qualifications Needed</div>
-                <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-qualifications', true)); ?></div>
-            </div>
+        <div class="job-row full-row first-row">
+            <div class="lbl">Qualifications Needed</div>
+            <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-qualifications', true)); ?></div>
+        </div>
 
-            <div class="job-row full-row">
-                <div class="lbl">Responsibilities</div>
-                <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-responsibilities', true)); ?></div>
-            </div>
+        <div class="job-row full-row">
+            <div class="lbl">Responsibilities</div>
+            <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-responsibilities', true)); ?></div>
+        </div>
 
-            <div class="job-row full-row">
-                <div class="lbl">Expectations</div>
-                <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-expectations', true)); ?></div>
-            </div>
-
+        <div class="job-row full-row">
+            <div class="lbl">Expectations</div>
+            <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-expectations', true)); ?></div>
         </div>
 
         <div class="controls">

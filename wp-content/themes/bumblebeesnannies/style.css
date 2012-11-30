@@ -14,7 +14,7 @@ html {
 
 body {
     background: url(img/bg_page.jpg) #f7f7f7 repeat-x;
-    border-top: solid 5px #b966a7;
+    border-top: solid 5px #ef59a1;
     min-height: 100%;
     margin: 0px;
     font-family: Dosis;
@@ -23,6 +23,22 @@ body {
 
 .centered {
     text-align: center;
+}
+
+.controls {
+    text-align: center;
+    margin-top: 1em;
+}
+    .controls button {
+        margin-right: .5em;
+    }
+
+#form-error-messages {
+    margin-top: 11px;   
+}
+
+.styled li {
+    list-style-image: url(img/li.png);
 }
 
 #wrapper {
@@ -42,7 +58,7 @@ body {
     }
 
     #blog-title {
-        background-image: url(img/logo.jpg);
+        background: url(img/sprite.png) no-repeat -132px 0px;
         width: 482px;
         height: 138px;
     }
@@ -67,7 +83,7 @@ body {
                 float: left;
             }
             #contact div {
-                color: #b966a7;
+                color: #ef59a1;
                 font-size: 16pt;
                 margin-top: 8px;
             }
@@ -75,7 +91,7 @@ body {
 
     #access {
         position: relative;
-        background-image: url(img/bg_navigation.png);
+        background: url(img/sprite.png) no-repeat 0px -138px;
         width: 940px;
         height: 77px;
     }
@@ -84,12 +100,15 @@ body {
         }
             #access ul .sub-menu {
                 position: relative;
-                background: url(img/bg_sub_navigation.png) no-repeat center bottom;
+                background: url(img/sprite.png) no-repeat 0px -215px;
                 width: 940px;
                 height: 45px;
                 margin: 0px;
                 padding-top: 5px;
                 display: none;
+            }
+            #access.front ul .sub-menu {
+                background: url(img/sprite.png) no-repeat 0px -264px;
             }
                 #access ul .menu-item-position-2 .sub-menu { left: -174px; }
                 #access ul .menu-item-position-3 .sub-menu { left: -327px; }
@@ -112,7 +131,7 @@ body {
                 }
 
             #access li, #contact li {
-                background-image: url(img/nav_off.png);
+                background: url(img/sprite.png) no-repeat 0px 0px;
                 width: 132px;
                 max-width: 107px;
                 height: 36px;
@@ -131,7 +150,7 @@ body {
                 }
 
             #access li:hover, #access li.current-menu-item, #access li.current-page-ancestor, #contact li:hover {
-                background-image: url(img/nav_on.png);
+                background: url(img/sprite.png) no-repeat 0px -36px;
                 padding: 0px;
                 min-width: 132px;
                 min-height: 36px;
@@ -191,14 +210,18 @@ body {
 
     #impact {
         position: relative;
-        background-image: url(img/impact/1.png);
         width: 940px;
         height: 281px;
         margin-bottom: 30px;
     }
+        .impact-1 { background-image: url(img/impact/1.png); }
+        .impact-2 { background-image: url(img/impact/2.png); }
+        .impact-3 { background-image: url(img/impact/3.png); }
+        .impact-4 { background-image: url(img/impact/4.png); }
+
         #tagline {
             position: relative;
-            background-image: url(img/bg_tagline.png);
+            background: url(img/sprite.png) no-repeat 0px -328px;
             width: 696px;
             height: 62px;
             max-height: 48px;
@@ -231,6 +254,9 @@ body {
         width: 200px;
         margin: 10px 22px 0 0;
     }
+        #sidebar .recent-blogs li {
+            list-style-image: url(img/li.png);
+        }
         .callout-link {
             color: #333;
         }
@@ -238,7 +264,7 @@ body {
             text-decoration: none;
         }
         .callout {
-            background-image: url(img/callout_off.png);
+            background: url(img/sprite.png) no-repeat -614px 0px;
             width: 200px;
             height: 60px;
             margin-bottom: 10px;
@@ -248,7 +274,7 @@ body {
             text-align: center;
         }
         .callout:hover {
-            background-image: url(img/callout_on.png);
+            background: url(img/sprite.png) no-repeat -614px -60px;
             color: #fff;
         }
             .callout div {                
@@ -279,7 +305,7 @@ body {
             margin-top: 0px;
         }
             #twitter .logo {
-                background-image: url(img/soc_twitter.png);
+                background: url(img/sprite.png) no-repeat -895px 0px;
                 width: 48px;
                 height: 44px;
                 margin-bottom: 8px;
@@ -341,7 +367,7 @@ body {
                 text-decoration: none;
             }
             #footer a:hover {
-                color: #b966a7;
+                color: #ef59a1;
             }
 
             #footer span {
@@ -359,25 +385,25 @@ body {
             }
 
             #footer .column .social-twitter {
-                background-image: url(img/soc_twitter_off.png);
+                background: url(img/sprite.png) no-repeat -814px 0px;
                 width: 40px;
                 height: 40px;
                 float: left;
                 margin: 20px 5px 0 0;
             }
             #footer .column .social-twitter:hover {
-                background-image: url(img/soc_twitter_on.png);
+                background: url(img/sprite.png) no-repeat -814px -50px;
                 height: 50px;
             }
             #footer .column .social-facebook {
-                background-image: url(img/soc_facebook_off.png);
+                background: url(img/sprite.png) no-repeat -854px 0px;
                 width: 41px;
                 height: 40px;
                 float: left;
                 margin-top: 20px;
             }
             #footer .column .social-facebook:hover {
-                background-image: url(img/soc_facebook_on.png);
+                background: url(img/sprite.png) no-repeat -854px -50px;
                 height: 50px;
             }
 
@@ -538,6 +564,10 @@ label {
     -moz-border-radius: 4px;
     border-radius: 4px;
     padding: 10px;
+
+    -moz-box-shadow:    0px 4px 16px 4px #ccc;
+    -webkit-box-shadow: 0px 4px 16px 4px #ccc;
+    box-shadow:         0px 4px 16px 4px #ccc;    
 }
     .nanny-share-family .sides {
         margin-bottom: 1em;   
@@ -557,13 +587,6 @@ label {
         }
         #cntr-ns-contact-form .controls {
             margin-top: 2em;
-        }
-    .controls {
-        text-align: center;
-        margin-bottom: 1em;
-    }
-        .controls button {
-            margin-right: .5em;
         }
 
     .share-row {
@@ -644,9 +667,12 @@ label {
     -moz-border-radius: 4px;
     border-radius: 4px;
     padding: 10px;
+
+    -moz-box-shadow:    0px 4px 16px 4px #ccc;
+    -webkit-box-shadow: 0px 4px 16px 4px #ccc;
+    box-shadow:         0px 4px 16px 4px #ccc;
 }
     .job-vacancy .sides {
-        margin-bottom: 1em;   
     }
         .job-vacancy .left, #cntr-ns-contact-form .left {
             float: left;
@@ -656,7 +682,7 @@ label {
         .job-vacancy .right, #cntr-ns-contact-form .right {
             float: left;
             width: 48%;
-            margin: 0 0 10px 1%;
+            margin-left: 1%;
         }
         #cntr-ns-contact-form input[type="text"] {
             width: 165px;
@@ -664,13 +690,9 @@ label {
         #cntr-ns-contact-form .controls {
             margin-top: 2em;
         }
-    .controls {
-        text-align: center;
-        margin-bottom: 1em;
+    .job-vacancy .controls {
+        margin-top: 1em;
     }
-        .controls button {
-            margin-right: .5em;
-        }
 
     .job-row {
         clear: both;
@@ -682,6 +704,11 @@ label {
         }
         .job-row.full-row {
             margin-bottom: 5px;
+        }
+        .job-row.full-row.first-row {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: solid 1px #ccc;
         }
         .job-row.full-row .lbl {
             float: none;
@@ -747,6 +774,10 @@ label {
     border-radius: 4px;
     padding: 10px 10px 0 10px;
     margin-top: 20px;
+
+    -moz-box-shadow:    0px 4px 16px 4px #ccc;
+    -webkit-box-shadow: 0px 4px 16px 4px #ccc;
+    box-shadow:         0px 4px 16px 4px #ccc;    
 }
     .fee-row {
         margin-bottom: 10px;

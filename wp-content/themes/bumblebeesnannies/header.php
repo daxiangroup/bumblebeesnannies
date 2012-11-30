@@ -39,7 +39,7 @@
                 </div>
             </div><!-- #branding -->
              
-            <div id="access">
+            <div id="access" class="<?php echo is_front_page() ? 'front' : '' ?>">
                 <?php wp_nav_menu( array( 'theme_location' => 'main-navigation') ); ?>
             </div><!-- #access -->
              
