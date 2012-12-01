@@ -41,6 +41,11 @@ body {
     list-style-image: url(img/li.png);
 }
 
+.blog-post-info {
+    font-size: 10pt;
+    margin: -20px 0 20px 0;
+}
+
 #wrapper {
     width: 940px;
     margin: 0 auto;
@@ -208,6 +213,18 @@ body {
                 margin-left: -19px;
             }
 
+    #nav-single {
+        overflow: auto;
+        margin-top: 8px;
+        clear: both;
+    }
+        .nav-previous {
+            float: left;
+        }
+        .nav-next {
+            float: right;
+        }
+
     #impact {
         position: relative;
         width: 940px;
@@ -296,9 +313,12 @@ body {
             background: url(img/sidebar/img1.png);
             margin-bottom: 10px;
         }
-            .families .filler-image {
-                background: url(img/sidebar/img2.png);
-            }
+            .families .filler-image, .family-registration .filler-image { background: url(img/sidebar/img2.png); }
+            .caregiver .filler-image, .caregiver-registration .filler-image { background: url(img/sidebar/img3.png); }
+            .nanny-share .filler-image { background: url(img/sidebar/img4.png); }
+            .contact .filler-image { background: url(img/sidebar/img5.png); }
+            .job-vacancies .filler-image { background: url(img/sidebar/img6.png); }
+            .blog .filler-image { background: url(img/sidebar/img7.png); }
 
         /*----[ Twitter ]----------------------------------------------*/
         #twitter {

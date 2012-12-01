@@ -299,11 +299,14 @@ function bbn_callouts($which=null) {
 	    $recent_blogs = new WP_query();
 	    $recent_blogs->query('showposts=5');
 
-	    echo '<ul class="recent-blogs">';
-	    while ($recent_blogs->have_posts()) : $recent_blogs->the_post();
-	    	?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
-	    endwhile;
-	    echo '</ul>';
+	    if ($recent_blogs->have_posts()) {
+            bbn_labels('Recent Blogs');
+		    echo '<ul class="recent-blogs">';
+		    while ($recent_blogs->have_posts()) : $recent_blogs->the_post();
+		    	?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
+		    endwhile;
+		    echo '</ul>';
+		}
     }
     if ($which == 'filler-image') {
 		echo '<div class="filler-image"></div>';

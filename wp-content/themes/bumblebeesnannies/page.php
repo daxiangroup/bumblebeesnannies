@@ -13,7 +13,6 @@
                     bbn_callouts();
                     bbn_callouts('sidebar-tagline');
                     bbn_callouts('filler-image');
-                    bbn_labels('Recent Blogs');
                     bbn_callouts('recent-blogs');
                     ?>
                 </div>

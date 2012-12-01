@@ -1,7 +1,7 @@
 <?php get_header(); ?>        
-        <div id="container">
+        <div id="container" class="job-vacancies">
             <div id="content">
-                <div id="body" class="job-vacancies">
+                <div id="body">
 
                     <h2 class="entry-title"><?php echo bbn_get_post($post->id, 'post_title'); ?></h2>
                     <?php echo bbn_get_post($post->id, 'post_content'); ?>
@@ -26,7 +26,6 @@
                     bbn_callouts();
                     bbn_callouts('sidebar-tagline');
                     bbn_callouts('filler-image');
-                    bbn_labels('Recent Blogs');
                     bbn_callouts('recent-blogs');
                     ?>
                 </div>
