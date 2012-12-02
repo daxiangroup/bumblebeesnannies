@@ -12,6 +12,7 @@ jQuery(document).ready(function() {
     }
 
     init_share_buttons();
+    init_job_buttons();
     init_contact_toggles();
     reset_submenus();
 });
@@ -266,7 +267,7 @@ function error_messages(messages) {
 }
 
 function init_share_buttons() {
-    jQuery('.nanny-share-families-looking .interested-family').each(function() {
+    jQuery('.nanny-share-families-looking .interested-family, .nanny-share-families-sharing .interested-family').each(function() {
         jQuery(this).click(function() {
             var current_location = String(document.location).split('/');
             current_location[(current_location.length-2)] = 'contact-family';
@@ -274,7 +275,17 @@ function init_share_buttons() {
             document.location.href = current_location + '?fid=' + jQuery(this).data('family-id');
         });
     });
+}
 
+function init_job_buttons() {
+    jQuery('.job-vacancies .interested-job').each(function() {
+        jQuery(this).click(function() {
+            var current_location = String(document.location).split('/');
+            current_location[(current_location.length-2)] = 'contact-family';
+            current_location = current_location.join('/');
+            document.location.href = current_location + '?jid=' + jQuery(this).data('job-id');
+        });
+    });
 }
 
 function init_contact_toggles() {
