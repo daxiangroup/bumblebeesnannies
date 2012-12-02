@@ -4,9 +4,9 @@
                 <div id="body">
 
                     <h2 class="entry-title"><?php echo bbn_get_post($post->id, 'post_title'); ?></h2>
-                    <?php echo bbn_get_post($post->id, 'post_content'); ?>
 
 <?php if (bbn_check_active_family($_GET['fid'])) { ?>
+                    <?php echo bbn_get_post($post->id, 'post_content'); ?>
 
                     <form id="frm-ns-contact" action="<?php echo get_bloginfo('url'); ?>/submit/contact-family.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="fid" value="<?php echo $_GET['fid']; ?>" />
@@ -99,18 +99,21 @@
 
                         <div class="controls">
                             <button class="btn btn-primary">Contact Family</button>
-                            <button class="btn">Back</button>
                         </div>
                     </div>
                     </form>
 <?php } else { ?>
-                    Bad Family
+                    <div class="centered">The Family you are trying to contact is not availble</div>
 <?php } ?>
                 </div>
 
                 <div id="sidebar">
-                    <?php bbn_callouts(); ?>
-                    <?php bbn_callouts('sidebar-tagline'); ?>
+                    <?php
+                    bbn_callouts();
+                    bbn_callouts('sidebar-tagline');
+                    bbn_callouts('filler-image');
+                    bbn_callouts('recent-blogs');
+                    ?>
                 </div>
             </div>
         </div>

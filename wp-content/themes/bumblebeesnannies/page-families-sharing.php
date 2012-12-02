@@ -1,7 +1,7 @@
 <?php get_header(); ?>        
         <div id="container">
             <div id="content">
-                <div id="body">
+                <div id="body" class="nanny-share-families-sharing">
 
                     <h2 class="entry-title"><?php echo bbn_get_post($post->id, 'post_title'); ?></h2>
                     <?php echo bbn_get_post($post->id, 'post_content'); ?>

@@ -1,3 +1,8 @@
+<?php
+    $page_type = false;
+    if (empty($page_type) && is_front_page()) { $page_type = 'front'; }
+    if (empty($page_type) && is_404()) { $page_type = 'four-oh-four'; }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +44,7 @@
                 </div>
             </div><!-- #branding -->
              
-            <div id="access" class="<?php echo is_front_page() ? 'front' : '' ?>">
+            <div id="access" class="<?php echo $page_type ?>">
                 <?php wp_nav_menu( array( 'theme_location' => 'main-navigation') ); ?>
             </div><!-- #access -->
              

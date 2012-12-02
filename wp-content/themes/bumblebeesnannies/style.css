@@ -29,7 +29,7 @@ body {
     text-align: center;
     margin-top: 1em;
 }
-    .controls button {
+    .controls button, .controls a {
         margin-right: .5em;
     }
 
@@ -45,6 +45,27 @@ body {
     font-size: 10pt;
     margin: -20px 0 20px 0;
 }
+
+.divider {
+    width: 683px;
+    height: 107px;
+    margin: 20px 0 0 -9px;
+}
+    .divider.div1 { background: url(img/dividers/div1.png); }
+    .divider.div2 { background: url(img/dividers/div2.png); }
+    .divider.div3 { background: url(img/dividers/div3.png); }
+    .divider.div4 { background: url(img/dividers/div4.png); }
+    .divider.div5 { background: url(img/dividers/div5.png); }
+    .divider.div6 { background: url(img/dividers/div6.png); }
+    .divider.div7 { background: url(img/dividers/div7.png); }
+    .divider.div8 { background: url(img/dividers/div8.png); }
+    .divider.div9 { background: url(img/dividers/div9.png); }
+    .divider.div10 { background: url(img/dividers/div10.png); }
+    .divider.div11 { background: url(img/dividers/div11.png); }
+    .divider.div12 { background: url(img/dividers/div12.png); }
+    .divider.div13 { background: url(img/dividers/div13.png); }
+    .divider.div14 { background: url(img/dividers/div14.png); }
+    .divider.div15 { background: url(img/dividers/div15.png); }
 
 #wrapper {
     width: 940px;
@@ -112,7 +133,7 @@ body {
                 padding-top: 5px;
                 display: none;
             }
-            #access.front ul .sub-menu {
+            #access.front ul .sub-menu, #access.four-oh-four ul .sub-menu {
                 background: url(img/sprite.png) no-repeat 0px -264px;
             }
                 #access ul .menu-item-position-2 .sub-menu { left: -174px; }
@@ -448,9 +469,6 @@ body {
         top: 340px;
         right: 0px;
     }
-        #four-oh-four .description a {
-            color: #b966a7;
-        }
 
 .alert a {
     font-weight: bold;
@@ -787,7 +805,7 @@ label {
 }
 
 /*-----[ Fee Structure ]------------------------------------------------------*/
-.fee-table {
+.fee-table, .payroll-table {
     border: solid 1px #ccc;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
