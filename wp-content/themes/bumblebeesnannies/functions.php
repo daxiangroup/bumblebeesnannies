@@ -258,21 +258,21 @@ function bbn_get_post($id, $item=null) {
 }
 
 function bbn_callouts($which=null) {
-	if (is_null($which) || $which == 'parents') {
+	if (is_null($which) || $which == 'families') {
 	?>
 	<a href="<?php bloginfo('url'); ?>/family-registration" class="callout-link">
-		<div id="callout-parents" class="callout">
-			<div>Parents</div>
+		<div id="callout-families" class="callout">
+			<div>Families</div>
 			Register Here
 		</div>
 	</a>
 	<?php
 	}
-	if (is_null($which) || $which == 'caregivers') {
+	if (is_null($which) || $which == 'nannies') {
 	?>
-	<a href="<?php bloginfo('url'); ?>/caregiver-registration" class="callout-link">
-		<div id="callout-caregivers" class="callout">
-			<div>Caregivers</div>
+	<a href="<?php bloginfo('url'); ?>/nanny-registration" class="callout-link">
+		<div id="callout-nannies" class="callout">
+			<div>Nannies</div>
 			Register Here
 		</div>
 	</a>

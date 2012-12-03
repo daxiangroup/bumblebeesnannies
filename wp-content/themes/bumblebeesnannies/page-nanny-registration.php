@@ -3,7 +3,7 @@
             <div id="content">
                 <div id="body">
 
-                    <h2 class="entry-title">Caregiver Registration Form</h2>
+                    <h2 class="entry-title">Nanny Registration Form</h2>
                     <?php echo bbn_get_post($post->id, 'post_content'); ?>
 
                     <form id="frm-caregivers-registration" action="<?php echo get_bloginfo('url'); ?>/submit/caregiver-registration.php" method="post" enctype="multipart/form-data">
