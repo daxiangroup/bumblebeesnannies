@@ -722,20 +722,20 @@ label {
 }
     .job-vacancy .sides {
     }
-        .job-vacancy .left, #cntr-ns-contact-form .left {
+        .job-vacancy .left, #cntr-job-contact-form .left {
             float: left;
             width: 48%;
             margin-right: 1%;
         }
-        .job-vacancy .right, #cntr-ns-contact-form .right {
+        .job-vacancy .right, #cntr-job-contact-form .right {
             float: left;
             width: 48%;
             margin-left: 1%;
         }
-        #cntr-ns-contact-form input[type="text"] {
+        #cntr-job-contact-form input[type="text"] {
             width: 165px;
         }
-        #cntr-ns-contact-form .controls {
+        #cntr-job-contact-form .controls {
             margin-top: 2em;
         }
     .job-vacancy .controls {
@@ -766,17 +766,17 @@ label {
             overflow:auto;
         }
 
-    #ns-start-month, #ns-start-day, #ns-start-year {
+    #job-start-month, #job-start-day, #job-start-year {
         float: left;
         margin-right: 10px;
     }
-    #ns-start-month {
+    #job-start-month {
         width: 120px;
     }
-    #ns-start-day {
+    #job-start-day {
         width: 60px;
     }
-    #ns-start-year {
+    #job-start-year {
         width: 80px;
     }
     .field.days label, .field.hours label {
