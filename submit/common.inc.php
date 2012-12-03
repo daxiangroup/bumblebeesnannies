@@ -7,6 +7,7 @@ define('HEARD_PAD',      28);
 define('RANDOM_HASH',    md5(date('r', time())));
 //define('RICHELLE',       'richelle@bumblebeesnannies.com');
 define('RICHELLE',       'ts@daxiangroup.com');
+define('FROM_ADDRESS',   'web@bumblebeesnannies.com');
 define('THANK_YOU_PAGE', '/bumblebees/thank-you');
 
 function sanitize_post($which) {

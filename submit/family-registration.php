@@ -1,8 +1,8 @@
 <?php
     require_once('common.inc.php');
 
-    $headers  = "From: web@bumblebeesnannies.com";
-    $headers .= "\r\nReply-To: web@bumblebeesnannies.com"; 
+    $headers  = "From: ".FROM_ADDRESS;
+    $headers .= "\r\nReply-To: ".FROM_ADDRESS; 
     $headers .= "\r\nContent-Type: multipart/mixed; boundary=\"PHP-mixed-".RANDOM_HASH."\""; 
 
     $body = '';
