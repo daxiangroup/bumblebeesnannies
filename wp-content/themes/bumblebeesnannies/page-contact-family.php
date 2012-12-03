@@ -5,7 +5,7 @@
 
                     <h2 class="entry-title"><?php echo bbn_get_post($post->id, 'post_title'); ?></h2>
 
-<?php if (bbn_check_active_family($_GET['fid'])) { ?>
+<?php if (bbn_check_active_state('family', $_GET['fid'])) { ?>
                     <?php echo bbn_get_post($post->id, 'post_content'); ?>
 
                     <form id="frm-ns-contact" action="<?php echo get_bloginfo('url'); ?>/submit/contact-family.php" method="post" enctype="multipart/form-data">
