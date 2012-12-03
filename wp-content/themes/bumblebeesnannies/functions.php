@@ -2,6 +2,7 @@
 define('POSTS_PER_PAGE', 2);
 define('JOB_POSTS_PER_PAGE', 5);
 define('BLOG_EXCERPT_LENGTH', 400);
+define('BLOGS_PER_PAGE', 4);
 
 
 // Get the page number
