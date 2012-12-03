@@ -27,6 +27,15 @@ function sanitize_post($which) {
                 $_POST['ns-hours'][$i]    = filter_var($_POST['ns-hours'][$i],        FILTER_SANITIZE_STRING);
             }
             break;
+        case 'contact-job':
+            $_POST['job-fullname']         = filter_var($_POST['job-fullname'],       FILTER_SANITIZE_STRING);
+            $_POST['job-email']            = filter_var($_POST['job-email'],          FILTER_SANITIZE_EMAIL);
+            $_POST['job-intersection']     = filter_var($_POST['job-intersection'],   FILTER_SANITIZE_EMAIL);
+            $_POST['job-age']              = filter_var($_POST['job-age'],            FILTER_SANITIZE_EMAIL);
+            for ($i=1; $i<=7; $i++) {
+                $_POST['job-hours'][$i]    = filter_var($_POST['job-hours'][$i],      FILTER_SANITIZE_STRING);
+            }
+            break;
         case 'caregiver-registration':
             $_POST['crf-fullname']        = filter_var($_POST['crf-fullname'],        FILTER_SANITIZE_STRING);
             $_POST['crf-email']           = filter_var($_POST['crf-email'],           FILTER_SANITIZE_EMAIL);

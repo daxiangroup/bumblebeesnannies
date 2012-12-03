@@ -5,6 +5,7 @@ jQuery(document).ready(function() {
 
     jQuery('#frm-family-registration').submit(function() { return family_validation(); });
     jQuery('#frm-ns-contact').submit(function() { return ns_contact_validation(); });
+    jQuery('#frm-job-contact').submit(function() { return job_contact_validation(); });
     jQuery('#frm-contact').submit(function() { return contact_validation(); });
 
     if (jQuery('#cntr-map').length) {
@@ -81,6 +82,50 @@ function ns_contact_validation() {
     });
 
     if (jQuery('#ns-start-month').val() == '' || jQuery('#ns-start-day').val() == '' || jQuery('#ns-start-year').val() == '') {
+        messages.push('The <a href="#section-contact">Start Date</a> must be selected in full');
+        retval = false;
+    }
+
+    if (!jQuery('#days-1').prop('checked') && !jQuery('#days-2').prop('checked') && !jQuery('#days-3').prop('checked') &&
+        !jQuery('#days-4').prop('checked') && !jQuery('#days-5').prop('checked') && !jQuery('#days-6').prop('checked') &&
+        !jQuery('#days-7').prop('checked')
+    ) {
+        messages.push('One of the <a href="#section-contact">Days</a> are required');
+        retval = false;
+    }
+
+    if ((jQuery('#days-1').prop('checked') && jQuery('#ns-hours-1').val() == '') ||
+        (jQuery('#days-2').prop('checked') && jQuery('#ns-hours-2').val() == '') ||
+        (jQuery('#days-3').prop('checked') && jQuery('#ns-hours-3').val() == '') ||
+        (jQuery('#days-4').prop('checked') && jQuery('#ns-hours-4').val() == '') ||
+        (jQuery('#days-5').prop('checked') && jQuery('#ns-hours-5').val() == '') ||
+        (jQuery('#days-6').prop('checked') && jQuery('#ns-hours-6').val() == '') ||
+        (jQuery('#days-7').prop('checked') && jQuery('#ns-hours-7').val() == '')
+    ) {
+        messages.push('<a href="#section-contact">Hours</a> must be supplied for selected Days');
+        retval = false;
+    }
+
+
+    if (!retval) {
+        error_messages(messages);
+    }
+
+    return retval;        
+}
+
+function job_contact_validation() {
+    var retval = true;
+    var messages = [];
+
+    jQuery('#cntr-job-contact-form .required').each(function() {
+        if (jQuery(this).val() == '') {
+            messages.push('The <a href="#section-' + jQuery(this).data('section') + '">' + jQuery(this).data('label') + '</a> field is required');
+            retval = false;
+        }
+    });
+
+    if (jQuery('#job-start-month').val() == '' || jQuery('#job-start-day').val() == '' || jQuery('#job-start-year').val() == '') {
         messages.push('The <a href="#section-contact">Start Date</a> must be selected in full');
         retval = false;
     }
@@ -281,7 +326,7 @@ function init_job_buttons() {
     jQuery('.job-vacancies .interested-job').each(function() {
         jQuery(this).click(function() {
             var current_location = String(document.location).split('/');
-            current_location[(current_location.length-2)] = 'contact-family';
+            current_location[(current_location.length-2)] = 'contact-job';
             current_location = current_location.join('/');
             document.location.href = current_location + '?jid=' + jQuery(this).data('job-id');
         });
