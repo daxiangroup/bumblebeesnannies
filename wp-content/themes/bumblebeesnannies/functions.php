@@ -1,6 +1,7 @@
 <?php
 define('POSTS_PER_PAGE', 2);
 define('JOB_POSTS_PER_PAGE', 5);
+define('BLOG_EXCERPT_LENGTH', 400);
 
 
 // Get the page number
@@ -624,6 +625,48 @@ function bbn_job_vacancies($job_vacancies) {
         'base' => str_replace( $big, '%#%', esc_url(get_pagenum_link($big))),
         'format' => '?paged=%#%',
         'total' => $job_vacancies->max_num_pages,
+        'current' => max(1, get_query_var('paged')),
+    ));
+    echo '</div>';
+}
+
+function bbn_blogs($blogs) {
+    while ($blogs->have_posts()) {
+    	$blog = $blogs->next_post();
+    	$user = get_userdata($blog->post_author);
+        //die('<pre>'.print_r($user,true));
+        //die('<pre>'.print_r($blog,true));
+
+        echo '<h2 class="entry-title"><a href="'.get_permalink($blog->ID).'">'.$blog->post_title.'</a></h2>';
+        echo '<div class="blog-post-info">Posted by '.$user->data->display_name.' on '.date("F j, Y", strtotime($blog->post_date)).'</div>';
+
+        if (!empty($blog->post_excerpt)) {
+        	echo $blog->post_excerpt;
+        	echo '<div class="blog-read-more"><a href="'.get_permalink($blog->ID).'">...More</a></div>';
+        	echo '<hr>';
+        	continue;
+        }
+
+        if (strlen($blog->post_content) > BLOG_EXCERPT_LENGTH) {
+        	echo substr($blog->post_content, 0, BLOG_EXCERPT_LENGTH).'...';
+        	echo '<div class="blog-read-more"><a href="'.get_permalink($blog->ID).'">...More</a></div>';
+        	echo '<hr>';
+        	continue;
+        }
+
+        echo $blog->post_content;
+        echo '<hr>';
+    ?>
+
+    <?php }
+
+    $big = 9999999999999;
+    
+    echo '<div class="controls">';
+    echo paginate_links(array(
+        'base' => str_replace( $big, '%#%', esc_url(get_pagenum_link($big))),
+        'format' => '?paged=%#%',
+        'total' => $blogs->max_num_pages,
         'current' => max(1, get_query_var('paged')),
     ));
     echo '</div>';

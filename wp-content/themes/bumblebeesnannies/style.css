@@ -45,6 +45,12 @@ body {
     font-size: 10pt;
     margin: -20px 0 20px 0;
 }
+    .blog.archive .blog-post-info {
+        margin: -10px 0 10px 0;
+    }
+.blog-read-more {
+    float: right;
+}    
 
 .divider {
     width: 683px;
@@ -136,6 +142,7 @@ body {
             #access.front ul .sub-menu, #access.four-oh-four ul .sub-menu {
                 background: url(img/sprite.png) no-repeat 0px -264px;
             }
+                #access ul .menu-item-position-1 .sub-menu { left: -21px; }
                 #access ul .menu-item-position-2 .sub-menu { left: -174px; }
                 #access ul .menu-item-position-3 .sub-menu { left: -327px; }
                 #access ul .menu-item-position-4 .sub-menu { left: -480px; }
@@ -384,6 +391,9 @@ body {
 }
 .entry-title {
     margin: 0px;
+}
+.entry-title a:hover {
+    text-decoration: underline;
 }
 
 
@@ -828,3 +838,11 @@ label {
     .fee-row .description {
         overflow: auto;
     }
+
+/*-----[ Terms & Conditions ]-------------------------------------------------*/
+.terms-conditions li {
+    margin-top: 10px;
+}
+.terms-conditions h4 {
+    margin: 0;
+}

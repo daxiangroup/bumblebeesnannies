@@ -2,6 +2,7 @@
     $page_type = false;
     if (empty($page_type) && is_front_page()) { $page_type = 'front'; }
     if (empty($page_type) && is_404()) { $page_type = 'four-oh-four'; }
+    if (empty($page_type) && is_archive()) { $page_type = 'blog'; }
 ?>
 <!DOCTYPE html>
 <html lang="en">
