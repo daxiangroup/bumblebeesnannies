@@ -2,6 +2,7 @@
 define('POSTS_PER_PAGE', 2);
 define('JOB_POSTS_PER_PAGE', 5);
 define('BLOG_EXCERPT_LENGTH', 400);
+define('BLOGS_PER_PAGE', 4);
 
 
 // Get the page number
@@ -515,18 +516,33 @@ function bbn_nanny_shares($nanny_shares) {
     echo '</div>';
 }
 
-function bbn_check_active_family($fid) {
-    $nanny_shares = new WP_query(array(
-        'p' => $fid,                                 
-        'post_type' => 'share_family',
+/*---------------------------------------------------------
+ | bbn_check_active_state($type, $id)
+ |---------------------------------------------------------
+ | Simply queries the post/page for the requested "job" to 
+ | ensure that it is active before trying to submit a contact
+ | request.
+ |
+ | @param $type     string - Type of post to check the status of
+ | @param $id       int - ID of the post to check the status of
+ */
+function bbn_check_active_state($type, $id) {
+    switch ($type) {
+        case 'family': $post_type = 'share_family'; break;
+        case 'job': $post_type = 'job_vacancy'; break;
+    }
+
+    $query = new WP_query(array(
+        'p' => $id,                                 
+        'post_type' => $post_type,
         'post_status' => 'publish',
     ));
 
-    if (!$nanny_shares->have_posts()) {
+    if (!$query->have_posts()) {
         return false;
     }
 
-    return $nanny_shares;
+    return $query;
 }
 
 function bbn_job_vacancies($job_vacancies) {

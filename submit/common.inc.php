@@ -7,6 +7,7 @@ define('HEARD_PAD',      28);
 define('RANDOM_HASH',    md5(date('r', time())));
 //define('RICHELLE',       'richelle@bumblebeesnannies.com');
 define('RICHELLE',       'ts@daxiangroup.com');
+define('FROM_ADDRESS',   'web@bumblebeesnannies.com');
 define('THANK_YOU_PAGE', '/bumblebees/thank-you');
 
 function sanitize_post($which) {
@@ -24,6 +25,15 @@ function sanitize_post($which) {
             $_POST['ns-age']              = filter_var($_POST['ns-age'],              FILTER_SANITIZE_EMAIL);
             for ($i=1; $i<=7; $i++) {
                 $_POST['ns-hours'][$i]    = filter_var($_POST['ns-hours'][$i],        FILTER_SANITIZE_STRING);
+            }
+            break;
+        case 'contact-job':
+            $_POST['job-fullname']         = filter_var($_POST['job-fullname'],       FILTER_SANITIZE_STRING);
+            $_POST['job-email']            = filter_var($_POST['job-email'],          FILTER_SANITIZE_EMAIL);
+            $_POST['job-intersection']     = filter_var($_POST['job-intersection'],   FILTER_SANITIZE_EMAIL);
+            $_POST['job-age']              = filter_var($_POST['job-age'],            FILTER_SANITIZE_EMAIL);
+            for ($i=1; $i<=7; $i++) {
+                $_POST['job-hours'][$i]    = filter_var($_POST['job-hours'][$i],      FILTER_SANITIZE_STRING);
             }
             break;
         case 'caregiver-registration':

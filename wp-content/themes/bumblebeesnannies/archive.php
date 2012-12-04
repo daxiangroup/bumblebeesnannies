@@ -14,9 +14,10 @@ Template Name: Archive
                         'post_type' => 'post',
                         'orderby' => 'date',
                         'order' => 'desc',
+                        'posts_per_page' => BLOGS_PER_PAGE,
                         'paged' => $paged,
                     ));
-//die('<pre>'.print_r($blogs,true));
+
                     bbn_blogs($blogs);
 
 	                ?>
