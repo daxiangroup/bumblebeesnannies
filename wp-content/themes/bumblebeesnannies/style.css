@@ -21,6 +21,10 @@ body {
     font-size: 12pt;
 }
 
+hr {
+    border-top: solid 1px #ddd;
+}
+
 .centered {
     text-align: center;
 }
@@ -189,7 +193,9 @@ body {
                 min-height: 36px;
                 z-index: 1000;
             }
-                #access li:hover .sub-menu, #access li.current-menu-item .sub-menu, #access li.current-page-ancestor .sub-menu {
+                #access li:hover .sub-menu, 
+                #access li.current-menu-item .sub-menu,
+                #access li.current-page-ancestor .sub-menu {
                     display: block;
                     z-index: 100;
                 }

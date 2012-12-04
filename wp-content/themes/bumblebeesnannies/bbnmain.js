@@ -41,6 +41,8 @@ function init_contact_map() {
 
 function reset_submenus() {
     var i = 1;
+    var current_location = String(document.location.href);
+    
     jQuery('#menu-main-navigation > li').each(function() {
         jQuery(this).addClass('menu-item-position-' + i);
         i += 1;
@@ -49,6 +51,10 @@ function reset_submenus() {
     jQuery('#menu-main-navigation ul.sub-menu').each(function() {
         jQuery(this).find('li').first().addClass('first-menu-item');
     });
+
+    if (current_location.match('blog\/')) {
+        jQuery('#menu-main-navigation').find('li').first().addClass('current-menu-item');
+    }
 }
 
 function contact_validation() {
