@@ -56,6 +56,14 @@ hr {
     float: right;
 }    
 
+.small-type {
+    font-size: 12px;
+}
+
+.strong {
+    font-weight: bold;
+}
+
 .divider {
     width: 683px;
     height: 107px;
