@@ -6,7 +6,7 @@
         <div class="column">
             <span>Bumble Bees Nannies</span>
             <ul>
-                <li>&copy; 2012</li>
+                <li>&copy; <?php echo date("Y"); ?></li>
             </ul>
         </div>
         <div class="column">
