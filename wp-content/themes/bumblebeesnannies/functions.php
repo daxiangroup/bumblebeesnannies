@@ -450,26 +450,26 @@ function bbn_nanny_shares($nanny_shares) {
                 <div class="top">
                     <div class="w33">
                         <div class="day">Monday</div>
-                        <div class="hours"><?php echo $hours[2]; ?></div>                    
+                        <div class="hours"><?php echo !empty($hours[2]) ? $hours[2] : '--'; ?></div>
                     </div>
                     <div class="w34">
                         <div class="day">Tuesday</div>
-                        <div class="hours"><?php echo $hours[3]; ?></div>                    
+                        <div class="hours"><?php echo !empty($hours[3]) ? $hours[3] : '--'; ?></div>
                     </div>
                     <div class="w33">
                         <div class="day">Wednesday</div>
-                        <div class="hours"><?php echo $hours[4]; ?></div>                    
+                        <div class="hours"><?php echo !empty($hours[4]) ? $hours[4] : '--'; ?></div>
                     </div>
                 </div>
 
                 <div class="bottom">
                     <div class="w33 ml17">
                         <div class="day">Thursday</div>
-                        <div class="hours"><?php echo $hours[5]; ?></div>
+                        <div class="hours"><?php echo !empty($hours[5]) ? $hours[5] : '--'; ?></div>
                     </div>
                     <div class="w33">
                         <div class="day">Friday</div>
-                        <div class="hours"><?php echo $hours[6]; ?></div>                    
+                        <div class="hours"><?php echo !empty($hours[6]) ? $hours[6] : '--'; ?></div>
                     </div>
                 </div>
 
