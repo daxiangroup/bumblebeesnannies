@@ -2,7 +2,7 @@
 
 <div id="#container">
 	<div id="content">
-		<div id="impact" class="impact-<?php echo rand(1,4); ?>">
+		<div id="impact" class="impact-<?php echo rand(1,3); ?>">
 			<div id="tagline"><?php bloginfo( 'description' ) ?></div>
 		</div>
 
@@ -22,7 +22,7 @@
 				</div>
 				<?php bbn_tweets(3); ?>
 			</div>
-			<?php //bbn_callouts('nanny-payroll'); ?>
+			<?php bbn_callouts('nanny-payroll'); ?>
 		</div>
 	</div>
 </div>

@@ -75,7 +75,6 @@ hr {
     .divider.div4 { background: url(img/dividers/div4.png); }
     .divider.div5 { background: url(img/dividers/div5.png); }
     .divider.div6 { background: url(img/dividers/div6.png); }
-    .divider.div7 { background: url(img/dividers/div7.png); }
     .divider.div8 { background: url(img/dividers/div8.png); }
     .divider.div9 { background: url(img/dividers/div9.png); }
     .divider.div10 { background: url(img/dividers/div10.png); }
@@ -276,8 +275,7 @@ hr {
         .impact-1 { background-image: url(img/impact/1.png); }
         .impact-2 { background-image: url(img/impact/2.png); }
         .impact-3 { background-image: url(img/impact/3.png); }
-        .impact-4 { background-image: url(img/impact/4.png); }
-
+        
         #tagline {
             position: relative;
             background: url(img/sprite.png) no-repeat 0px -328px;
@@ -688,6 +686,26 @@ label {
             overflow:auto;
         }
 
+        .share-row.days-hours {
+            padding-top: 10px;
+        }
+            .days-hours .top {
+                overflow: auto;
+                margin-bottom: 10px;
+            }
+            .days-hours .w33, .days-hours .w34 {
+                width: 33%;
+                height: 40px;
+                float: left;
+                text-align: center;
+            }
+            .days-hours .w34 { width: 34%; }
+            .days-hours .ml17 { margin-left: 17%; }
+
+            .days-hours .day {
+                font-weight: bold;
+            }
+
     #ns-start-month, #ns-start-day, #ns-start-year {
         float: left;
         margin-right: 10px;
@@ -841,6 +859,10 @@ label {
     -webkit-box-shadow: 0px 4px 16px 4px #ccc;
     box-shadow:         0px 4px 16px 4px #ccc;    
 }
+    .payroll-table {
+        margin-bottom: 20px;
+    }
+
     .fee-row {
         margin-bottom: 10px;
     }

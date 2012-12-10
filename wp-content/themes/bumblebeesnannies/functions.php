@@ -282,7 +282,7 @@ function bbn_callouts($which=null) {
 	}
 	if ($which == 'nanny-payroll') {
 	?>
-	<a href="<?php bloginfo('url'); ?>/caregiver-registration" class="callout-link">
+	<a href="<?php bloginfo('url'); ?>/families/tax-information-and-nanny-pay-scale/" class="callout-link">
 		<div id="callout-payroll" class="callout">
 			<div>Nanny Payroll</div>
 			More Information
@@ -433,17 +433,6 @@ function bbn_nanny_shares($nanny_shares) {
                     <div class="lbl">Closest Intersection</div>
                     <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'ns-family-intersection', true)); ?></div>
                 </div>
-
-                <div class="share-row full-row days">
-                    <div class="lbl">Days</div>
-                    <div class="day">Sun</div> <input type="checkbox"<?php echo ($days[1] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
-                    <div class="day">Mon</div> <input type="checkbox"<?php echo ($days[2] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
-                    <div class="day">Tue</div> <input type="checkbox"<?php echo ($days[3] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
-                    <div class="day">Wed</div> <input type="checkbox"<?php echo ($days[4] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;"><br />
-                    <div class="day">Thu</div> <input type="checkbox"<?php echo ($days[5] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
-                    <div class="day">Fri</div> <input type="checkbox"<?php echo ($days[6] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
-                    <div class="day">Sat</div> <input type="checkbox"<?php echo ($days[7] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
-                </div>
             </div>
             <div class="right">
                 <div class="share-row">
@@ -455,46 +444,44 @@ function bbn_nanny_shares($nanny_shares) {
                     <div class="lbl">Start Date</div>
                     <div class="fld"><?php echo $date; ?></div>
                 </div>
-
-                <div class="share-row full-row hours">
-                    <div class="lbl">Hours</div>
-
-                    <?php if ($hours[1]) { ?>
-                    <div class="day">Sunday</div>
-                    <div class="hours"><?php echo $hours[1]; ?></div>
-                    <?php } ?>
-
-                    <?php if ($hours[2]) { ?>
-                    <div class="day">Monday</div>
-                    <div class="hours"><?php echo $hours[2]; ?></div>
-                    <?php } ?>
-
-                    <?php if ($hours[3]) { ?>
-                    <div class="day">Tuesday</div>
-                    <div class="hours"><?php echo $hours[3]; ?></div>
-                    <?php } ?>
-
-                    <?php if ($hours[4]) { ?>
-                    <div class="day">Wednesday</div>
-                    <div class="hours"><?php echo $hours[4]; ?></div>
-                    <?php } ?>
-
-                    <?php if ($hours[5]) { ?>
-                    <div class="day">Thursday</div>
-                    <div class="hours"><?php echo $hours[5]; ?></div>
-                    <?php } ?>
-
-                    <?php if ($hours[6]) { ?>
-                    <div class="day">Friday</div>
-                    <div class="hours"><?php echo $hours[6]; ?></div>
-                    <?php } ?>
-
-                    <?php if ($hours[7]) { ?>
-                    <div class="day">Saturday</div>
-                    <div class="hours"><?php echo $hours[7]; ?></div>
-                    <?php } ?>
-                </div>
             </div>
+
+            <div class="share-row full-row days-hours">
+                <div class="top">
+                    <div class="w33">
+                        <div class="day">Monday</div>
+                        <div class="hours"><?php echo $hours[2]; ?></div>                    
+                    </div>
+                    <div class="w34">
+                        <div class="day">Tuesday</div>
+                        <div class="hours"><?php echo $hours[3]; ?></div>                    
+                    </div>
+                    <div class="w33">
+                        <div class="day">Wednesday</div>
+                        <div class="hours"><?php echo $hours[4]; ?></div>                    
+                    </div>
+                </div>
+
+                <div class="bottom">
+                    <div class="w33 ml17">
+                        <div class="day">Thursday</div>
+                        <div class="hours"><?php echo $hours[5]; ?></div>
+                    </div>
+                    <div class="w33">
+                        <div class="day">Friday</div>
+                        <div class="hours"><?php echo $hours[6]; ?></div>                    
+                    </div>
+                </div>
+
+                <?php /*
+                <div class="day">Mon</div> <input type="checkbox"<?php echo ($days[2] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                <div class="day">Tue</div> <input type="checkbox"<?php echo ($days[3] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                <div class="day">Wed</div> <input type="checkbox"<?php echo ($days[4] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;"><br />
+                <div class="day">Thu</div> <input type="checkbox"<?php echo ($days[5] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                <div class="day">Fri</div> <input type="checkbox"<?php echo ($days[6] ? ' checked' : ''); ?> onclick="this.checked=!this.checked;">
+                */ ?>
+            </div>
+
         </div>
 
         <div class="controls">
@@ -570,7 +557,7 @@ function bbn_job_vacancies($job_vacancies) {
         <div class="sides clearfix">
             <div class="left">
                 <div class="job-row">
-                    <div class="lbl">Family Number</div>
+                    <div class="lbl">Job Number</div>
                     <div class="fld"><?php echo $post->ID; ?></div>
                 </div>
 
@@ -602,7 +589,7 @@ function bbn_job_vacancies($job_vacancies) {
 
                 <div class="job-row">
                     <div class="lbl">Salary/Wages</div>
-                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-salary', true)); ?></div>
+                    <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-salary', true)); ?> gross</div>
                 </div>
 
                 <div class="job-row">
@@ -627,9 +614,11 @@ function bbn_job_vacancies($job_vacancies) {
             <div class="fld"><?php echo esc_attr(get_post_meta($post->ID, 'jv-expectations', true)); ?></div>
         </div>
 
+        <?php /*
         <div class="controls">
             <button class="btn interested-job" data-job-id="<?php echo $post->ID; ?>">I'm Interested In This Job</button>
         </div>
+        */ ?>
     </div>
 
     <?php }
