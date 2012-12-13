@@ -57,20 +57,22 @@
                         <div class="clearfix"></div>
                         <div class="field days">
                             <?php echo _e('Days'); ?><span class="req">*</span><br />
-                            <input type="checkbox" name="ns-days[1]" id="days-1" data-input="day-input-1" value="1"><label class="checkbox" for="days-1">Sunday</label>
+                            <!--<input type="checkbox" name="ns-days[1]" id="days-1" data-input="day-input-1" value="1"><label class="checkbox" for="days-1">Sunday</label>-->
                             <input type="checkbox" name="ns-days[2]" id="days-2" data-input="day-input-2" value="1"><label class="checkbox" for="days-2">Monday</label>
                             <input type="checkbox" name="ns-days[3]" id="days-3" data-input="day-input-3" value="1"><label class="checkbox" for="days-3">Tuesday</label>
                             <input type="checkbox" name="ns-days[4]" id="days-4" data-input="day-input-4" value="1"><label class="checkbox" for="days-4">Wednesday</label>
                             <input type="checkbox" name="ns-days[5]" id="days-5" data-input="day-input-5" value="1"><label class="checkbox" for="days-5">Thursday</label>
                             <input type="checkbox" name="ns-days[6]" id="days-6" data-input="day-input-6" value="1"><label class="checkbox" for="days-6">Friday</label>
-                            <input type="checkbox" name="ns-days[7]" id="days-7" data-input="day-input-7" value="1"><label class="checkbox" for="days-7">Saturday</label>
+                            <!--<input type="checkbox" name="ns-days[7]" id="days-7" data-input="day-input-7" value="1"><label class="checkbox" for="days-7">Saturday</label>-->
                         </div>
-                        <div class="field hours">
+                        <div class="field hours clearfix">
                             <?php echo _e('Hours'); ?><span class="req">*</span><br />
+                            <!--
                             <div id="day-input-1">
                                 <label for="">Sunday</label>
                                 <input type="text" id="ns-hours-1" name="ns-hours[1]" />
                             </div>
+                            -->
                             <div id="day-input-2">
                                 <label for="">Monday</label>
                                 <input type="text" id="ns-hours-2" name="ns-hours[2]" />
@@ -91,10 +93,12 @@
                                 <label for="">Friday</label>
                                 <input type="text" id="ns-hours-6" name="ns-hours[6]" />
                             </div>
+                            <!--
                             <div id="day-input-7">
                                 <label for="">Saturday</label>
                                 <input type="text" id="ns-hours-7" name="ns-hours[7]" />
                             </div>
+                            -->
                         </div>                        
 
                         <div class="controls">

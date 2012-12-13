@@ -1,44 +1,35 @@
 <?php
+    require_once('../wp-load.php');
     require_once('common.inc.php');
 
-    sanitize_post('contact-family');
+    bbn_sanitize_post('contact-family');
 
-    $headers  = "From: ".FROM_ADDRESS;
-    $headers .= "\r\nReply-To: ".FROM_ADDRESS; 
-    $headers .= "\r\nContent-Type: multipart/mixed; boundary=\"PHP-mixed-".RANDOM_HASH."\""; 
+    $headers[] = "From: ".$_POST['ns-email']." <".$_POST['ns-email'].">\r\n";
 
     $body = '';
-    $body .= '--PHP-alt-'.RANDOM_HASH.PHP_EOL;
-    $body .= 'Content-Type: text/plain; charset="iso-8859-1"'.PHP_EOL;
-    $body .= 'Content-Transfer-Encoding: 7bit'.PHP_EOL;
+    $body .= '-----------------------------------------------------'.BR;
+    $body .= '| Family Contact Request'.BR;
+    $body .= '-----------------------------------------------------'.BR;
+    $body .= BR;
+    $body .= '<strong>Family Details</strong>'.BR;
+    $body .= SPACER.str_pad('Family ID: ', PAD).$_POST['fid'].BR;
+    $body .= SPACER.str_pad('Family Link: ', PAD).'http://'.$_SERVER['SERVER_NAME'].str_replace('submit/contact-family.php', 'wp-admin/post.php?post='.$_POST['fid'].'&action=edit', $_SERVER['REQUEST_URI']).BR;
+    $body .= BR;
+    $body .= '<strong>Contact & Details</strong>'.BR;
+    $body .= SPACER.str_pad('Full Name: ', PAD).$_POST['ns-fullname'].BR;
+    $body .= SPACER.str_pad('Email Address: ', PAD).$_POST['ns-email'].BR;
+    $body .= SPACER.str_pad('Intersection: ', PAD).$_POST['ns-intersection'].BR;
+    $body .= SPACER.str_pad('Age of Children: ', PAD).$_POST['ns-age'].BR;
+    $body .= BR;
+    $body .= '<strong>Days / Hours</strong>'.BR;
+    $body .= SPACER.str_pad('Monday', PAD).'['.(isset($_POST['ns-days'][2]) ? 'X' : ' ').'] '.$_POST['ns-hours'][2].BR;
+    $body .= SPACER.str_pad('Tuesday', PAD).'['.(isset($_POST['ns-days'][3]) ? 'X' : ' ').'] '.$_POST['ns-hours'][3].BR;
+    $body .= SPACER.str_pad('Wednesday', PAD).'['.(isset($_POST['ns-days'][4]) ? 'X' : ' ').'] '.$_POST['ns-hours'][4].BR;
+    $body .= SPACER.str_pad('Thursday', PAD).'['.(isset($_POST['ns-days'][5]) ? 'X' : ' ').'] '.$_POST['ns-hours'][5].BR;
+    $body .= SPACER.str_pad('Friday', PAD).'['.(isset($_POST['ns-days'][6]) ? 'X' : ' ').'] '.$_POST['ns-hours'][6].BR;
+    $body .= BR;
 
-    $body .= '-----------------------------------------------------------------'.PHP_EOL;
-    $body .= '| Family Contact Request'.PHP_EOL;
-    $body .= '-----------------------------------------------------------------'.PHP_EOL;
-    $body .= PHP_EOL;
-    $body .= 'Family Details'.PHP_EOL;
-    $body .= SPACER.str_pad('Family ID', PAD).$_POST['fid'].PHP_EOL;
-    $body .= SPACER.str_pad('Family Link', PAD).'http://'.$_SERVER['SERVER_NAME'].str_replace('submit/contact-family.php', 'wp-admin/post.php?post='.$_POST['fid'].'&action=edit', $_SERVER['REQUEST_URI']).PHP_EOL;
-    $body .= PHP_EOL;
-    $body .= 'Contact & Details'.PHP_EOL;
-    $body .= SPACER.str_pad('Full Name: ', PAD).$_POST['ns-fullname'].PHP_EOL;
-    $body .= SPACER.str_pad('Email Address: ', PAD).$_POST['ns-email'].PHP_EOL;
-    $body .= SPACER.str_pad('Intersection: ', PAD).$_POST['ns-intersection'].PHP_EOL;
-    $body .= SPACER.str_pad('Age of Children: ', PAD).$_POST['ns-age'].PHP_EOL;
-    $body .= PHP_EOL;
-    $body .= 'Days / Hours'.PHP_EOL;
-    $body .= SPACER.str_pad('Sunday', PAD).'['.(isset($_POST['ns-days'][1]) ? 'X' : ' ').'] '.$_POST['ns-hours'][1].PHP_EOL;
-    $body .= SPACER.str_pad('Monday', PAD).'['.(isset($_POST['ns-days'][2]) ? 'X' : ' ').'] '.$_POST['ns-hours'][2].PHP_EOL;
-    $body .= SPACER.str_pad('Tuesday', PAD).'['.(isset($_POST['ns-days'][3]) ? 'X' : ' ').'] '.$_POST['ns-hours'][3].PHP_EOL;
-    $body .= SPACER.str_pad('Wednesday', PAD).'['.(isset($_POST['ns-days'][4]) ? 'X' : ' ').'] '.$_POST['ns-hours'][4].PHP_EOL;
-    $body .= SPACER.str_pad('Thursday', PAD).'['.(isset($_POST['ns-days'][5]) ? 'X' : ' ').'] '.$_POST['ns-hours'][5].PHP_EOL;
-    $body .= SPACER.str_pad('Friday', PAD).'['.(isset($_POST['ns-days'][6]) ? 'X' : ' ').'] '.$_POST['ns-hours'][6].PHP_EOL;
-    $body .= SPACER.str_pad('Saturday', PAD).'['.(isset($_POST['ns-days'][7]) ? 'X' : ' ').'] '.$_POST['ns-hours'][7].PHP_EOL;
-    $body .= PHP_EOL;
-
-    $body .= '--PHP-alt-'.RANDOM_HASH.'--'.PHP_EOL;
-
-    $mail_sent = mail(RICHELLE, 'Family Contact Request', $body, $headers);
+    $mail_sent = bbn_mail(RICHELLE, 'Family Contact Request', $body, $headers);
     
     header('Location: '.THANK_YOU_PAGE);
     die();

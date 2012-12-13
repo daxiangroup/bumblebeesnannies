@@ -14,8 +14,10 @@
         <label class="radio" for="jv-type-2">Part Time</label>
         <input type="radio" id="jv-type-3" name="jv-type" value="3"<?php echo ($type == '3' ? ' checked' : ''); ?> />
         <label class="radio" for="jv-type-3">After School Care</label>
+        <!--
         <input type="radio" id="jv-type-4" name="jv-type" value="4"<?php echo ($type == '4' ? ' checked' : ''); ?> />
         <label class="radio" for="jv-type-4">Mother's Help</label>
+        -->
     </div>
 
     <div class="left">

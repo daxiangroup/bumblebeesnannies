@@ -49,21 +49,23 @@
 
 <div class="day-select">
     <label><?php echo _e('Days'); ?></label><br />
-    <input type="checkbox" name="ns-family-days[1]" id="days-1" data-input="day-input-1" value="1"<?php echo ($days[1] ? ' checked' : ''); ?>><label class="checkbox" for="days-1">Sunday</label>
+    <!--<input type="checkbox" name="ns-family-days[1]" id="days-1" data-input="day-input-1" value="1"<?php echo ($days[1] ? ' checked' : ''); ?>><label class="checkbox" for="days-1">Sunday</label>-->
     <input type="checkbox" name="ns-family-days[2]" id="days-2" data-input="day-input-2" value="1"<?php echo ($days[2] ? ' checked' : ''); ?>><label class="checkbox" for="days-2">Monday</label>
     <input type="checkbox" name="ns-family-days[3]" id="days-3" data-input="day-input-3" value="1"<?php echo ($days[3] ? ' checked' : ''); ?>><label class="checkbox" for="days-3">Tuesday</label>
     <input type="checkbox" name="ns-family-days[4]" id="days-4" data-input="day-input-4" value="1"<?php echo ($days[4] ? ' checked' : ''); ?>><label class="checkbox" for="days-4">Wednesday</label>
     <input type="checkbox" name="ns-family-days[5]" id="days-5" data-input="day-input-5" value="1"<?php echo ($days[5] ? ' checked' : ''); ?>><label class="checkbox" for="days-5">Thursday</label>
     <input type="checkbox" name="ns-family-days[6]" id="days-6" data-input="day-input-6" value="1"<?php echo ($days[6] ? ' checked' : ''); ?>><label class="checkbox" for="days-6">Friday</label>
-    <input type="checkbox" name="ns-family-days[7]" id="days-7" data-input="day-input-7" value="1"<?php echo ($days[7] ? ' checked' : ''); ?>><label class="checkbox" for="days-7">Saturday</label>
+    <!--<input type="checkbox" name="ns-family-days[7]" id="days-7" data-input="day-input-7" value="1"<?php echo ($days[7] ? ' checked' : ''); ?>><label class="checkbox" for="days-7">Saturday</label>-->
 </div>
 
 <div class="day-input">
     <label><?php echo _e('Hours'); ?></label><br />
+    <!--
     <div id="day-input-1">
         <label for="">Sunday</label>
         <input type="text" id="ns-family-hours-1" name="ns-family-hours[1]" value="<?php echo $hours[1]; ?>" />
     </div>
+    -->
     <div id="day-input-2">
         <label for="">Monday</label>
         <input type="text" id="ns-family-hours-2" name="ns-family-hours[2]" value="<?php echo $hours[2]; ?>" />
@@ -84,10 +86,12 @@
         <label for="">Friday</label>
         <input type="text" id="ns-family-hours-6" name="ns-family-hours[6]" value="<?php echo $hours[6]; ?>" />
     </div>
+    <!--
     <div id="day-input-7">
         <label for="">Saturday</label>
         <input type="text" id="ns-family-hours-7" name="ns-family-hours[7]" value="<?php echo $hours[7]; ?>" />
     </div>
+    -->
 </div>
 
 

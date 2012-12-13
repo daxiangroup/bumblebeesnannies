@@ -1,16 +1,17 @@
 <?php
-define('SPACER',         '   ');
+define('SPACER',         '&nbsp;&nbsp;&nbsp;');
 define('PAD',            20);
 define('POS_PAD',        28);
 define('QUAL_PAD',       24);
 define('HEARD_PAD',      28);
+define('BR',             '<br>');
 define('RANDOM_HASH',    md5(date('r', time())));
 //define('RICHELLE',       'richelle@bumblebeesnannies.com');
 define('RICHELLE',       'ts@daxiangroup.com');
 define('FROM_ADDRESS',   'web@bumblebeesnannies.com');
-define('THANK_YOU_PAGE', '/bumblebees/thank-you');
+define('THANK_YOU_PAGE', '/thank-you');
 
-function sanitize_post($which) {
+function bbn_sanitize_post($which) {
     switch ($which) {
         case 'contact':
             $_POST['con-fullname']        = filter_var($_POST['con-fullname'],        FILTER_SANITIZE_STRING);
@@ -57,4 +58,9 @@ function sanitize_post($which) {
             $_POST['frf-other']           = filter_var($_POST['frf-other'],           FILTER_SANITIZE_STRING);
             break;
     }
+}
+
+function bbn_mail($to, $subject, $message='', $headers=null, $attachments=null) {
+    add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));    
+    return wp_mail($to, $subject, $pre_message.$message, $headers, $attachments);
 }
