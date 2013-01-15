@@ -3,10 +3,18 @@
             <div id="content">
                 <div id="body">
 
+                    <?php if (isset($_GET['se']) && $_GET['se'] == '1') { ?>
+                    <div class="alert alert-error">
+                        <h4>Submission Error</h4>
+                        We're sorry, there was an error submitting your registration. Please try again, or get in <a href="<?php echo site_url('/contact'); ?>">contact</a> with us.
+                    </div>
+                    <?php } ?>
+
                     <h2 class="entry-title">Nanny Registration Form</h2>
                     <?php echo bbn_get_post($post->id, 'post_content'); ?>
 
                     <form id="frm-caregivers-registration" action="<?php echo get_bloginfo('url'); ?>/submit/caregiver-registration.php" method="post" enctype="multipart/form-data">
+                    <?php wp_nonce_field('caregiver-registration'); ?>
                     <div id="cntr-caregivers-registration-form">
                         <h4 id="section-contact">Contact Details</h4>
                         <div class="contact left">

@@ -9,10 +9,18 @@
             <div id="content">
                 <div id="body">
 
+                    <?php if (isset($_GET['se']) && $_GET['se'] == '1') { ?>
+                    <div class="alert alert-error">
+                        <h4>Submission Error</h4>
+                        We're sorry, there was an error submitting your request for contact. Please try again, or get in <a href="<?php echo site_url('/contact'); ?>">contact</a> with us.
+                    </div>
+                    <?php } ?>
+
                     <h2 class="entry-title"><?php echo bbn_get_post($post->id, 'post_title'); ?></h2>
                     <?php echo bbn_get_post($post->id, 'post_content'); ?>                    
 
                     <form id="frm-contact" action="<?php echo get_bloginfo('url'); ?>/submit/contact.php" method="post">
+                    <?php wp_nonce_field('contact'); ?>
                     <div id="cntr-contact-form">
                         <div class="field">
                             <label for="con-fullname">Full Name<span class="req">*</span></label>

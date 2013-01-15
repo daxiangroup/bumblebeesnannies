@@ -3,12 +3,20 @@
             <div id="content">
                 <div id="body">
 
+                    <?php if (isset($_GET['se']) && $_GET['se'] == '1') { ?>
+                    <div class="alert alert-error">
+                        <h4>Submission Error</h4>
+                        We're sorry, there was an error submitting your request for contact. Please try again, or get in <a href="<?php echo site_url('/contact'); ?>">contact</a> with us.
+                    </div>
+                    <?php } ?>
+
                     <h2 class="entry-title"><?php echo bbn_get_post($post->id, 'post_title'); ?></h2>
 
 <?php if (bbn_check_active_state('family', $_GET['fid'])) { ?>
                     <?php echo bbn_get_post($post->id, 'post_content'); ?>
 
                     <form id="frm-ns-contact" action="<?php echo get_bloginfo('url'); ?>/submit/contact-family.php" method="post" enctype="multipart/form-data">
+                    <?php wp_nonce_field('contact-family'); ?>
                         <input type="hidden" name="fid" value="<?php echo $_GET['fid']; ?>" />
 
                     <div id="cntr-ns-contact-form">

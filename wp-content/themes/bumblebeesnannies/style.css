@@ -306,6 +306,10 @@ hr {
             margin: 0 5px 4px 0;
         }
 
+        #body .alert.alert-error {
+            margin-top: 9px;
+        }
+
     #sidebar {
         float: right;
         width: 200px;
