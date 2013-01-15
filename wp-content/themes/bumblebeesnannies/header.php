@@ -19,6 +19,7 @@
     <link href="<?php echo home_url('/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
     <link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+    <link rel='shortcut icon' href='<?php echo home_url('/favicon.gif'); ?>' type="image/ico">
     
     <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
      

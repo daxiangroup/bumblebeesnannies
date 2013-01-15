@@ -26,7 +26,7 @@
             <span>More Information</span><br />
             <?php wp_nav_menu( array( 'theme_location' => 'footer-information') ); ?>
             <a href="http://www.twitter.com/BumbleBeesNanny" target="_blank"><div class="social-twitter"></div></a>
-            <a href="http://www.facebook.com/pages/Bumble-Bees-Nannies-Inc/278615932216295" target="_blank"><div class="social-facebook"></div></a>
+            <a href="http://www.facebook.com/BumbleBeesNanniesInc" target="_blank"><div class="social-facebook"></div></a>
         </div>
     </div>
 </div><!-- #footer -->
