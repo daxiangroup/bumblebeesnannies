@@ -317,9 +317,12 @@ function bbn_callouts($which=null) {
 
 function bbn_tweets($num_to_get=5) {
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, 'http://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name=BumbleBeesNanny&count='.$num_to_get);
+	curl_setopt($ch, CURLOPT_URL, 'https://api.twitter.com/1.1/statuses/user_timeline.json?include_rts=true&screen_name=BumbleBeesNanny&count='.$num_to_get);
 	curl_setopt($ch, CURLOPT_HEADER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Authorization: Bearer AAAAAAAAAAAAAAAAAAAAAPwJSQAAAAAAIr7001EsI9J62AA9RAVSJHJjj6k%3DTOiBmEmXf78IcCaTQAROYzGD2QhO0Nd25OiHaS3WYg',
+    ));
 	$response = curl_exec($ch);
 	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 	curl_close($ch);
