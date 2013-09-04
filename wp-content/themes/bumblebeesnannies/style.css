@@ -1,4 +1,4 @@
-/*   
+/*
 Theme Name: Bumble Bees Nannies
 Description: Main Bumble Bees Nannies theme for the corporate website.
 Author: Tyler Schwartz
@@ -9,7 +9,7 @@ Tags: Simple, Clean, Elegant, Professional
 
 html {
     overflow:-moz-scrollbars-vertical;
-    overflow-y:scroll; 
+    overflow-y:scroll;
 }
 
 body {
@@ -38,7 +38,7 @@ hr {
     }
 
 #form-error-messages {
-    margin-top: 11px;   
+    margin-top: 11px;
 }
 
 .styled li {
@@ -54,7 +54,7 @@ hr {
     }
 .blog-read-more {
     float: right;
-}    
+}
 
 .small-type {
     font-size: 12px;
@@ -200,7 +200,7 @@ hr {
                 min-height: 36px;
                 z-index: 1000;
             }
-                #access li:hover .sub-menu, 
+                #access li:hover .sub-menu,
                 #access li.current-menu-item .sub-menu,
                 #access li.current-page-ancestor .sub-menu {
                     display: block;
@@ -275,7 +275,7 @@ hr {
         .impact-1 { background-image: url(img/impact/1.png); }
         .impact-2 { background-image: url(img/impact/2.png); }
         .impact-3 { background-image: url(img/impact/3.png); }
-        
+
         #tagline {
             position: relative;
             background: url(img/sprite.png) no-repeat 0px -328px;
@@ -297,9 +297,8 @@ hr {
 
     #body {
         width: 665px;
-        margin-left: 22px;
+        margin: 0 auto;
         text-align: justify;
-        float: left;
     }
         #body img.alignleft {
             float: left;
@@ -338,7 +337,7 @@ hr {
             background: url(img/sprite.png) no-repeat -614px -60px;
             color: #fff;
         }
-            .callout div {                
+            .callout div {
                 font-size: 18pt;
                 text-transform: uppercase;
                 text-shadow: 1px 1px 1px #333;
@@ -515,9 +514,9 @@ label {
         margin-top: -2px !important;
     }
 .req {
-    color: #c00; 
+    color: #c00;
 }
-/*----[ Caregivers Registeration Form ]---------------------------------------*/    
+/*----[ Caregivers Registeration Form ]---------------------------------------*/
 #cntr-caregivers-registration-form {
     overflow: auto;
     margin-bottom: 30px;
@@ -568,7 +567,7 @@ label {
         float: left;
     }
 
-/*----[ Family Registeration Form ]-------------------------------------------*/    
+/*----[ Family Registeration Form ]-------------------------------------------*/
 #cntr-family-registration-form {
     overflow: auto;
     margin-bottom: 30px;
@@ -631,10 +630,10 @@ label {
 
     -moz-box-shadow:    0px 4px 16px 4px #ccc;
     -webkit-box-shadow: 0px 4px 16px 4px #ccc;
-    box-shadow:         0px 4px 16px 4px #ccc;    
+    box-shadow:         0px 4px 16px 4px #ccc;
 }
     .nanny-share-family .sides {
-        margin-bottom: 1em;   
+        margin-bottom: 1em;
     }
         .nanny-share-family .left, #cntr-ns-contact-form .left {
             float: left;
@@ -837,7 +836,7 @@ label {
     border: solid 1px #ccc;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
-    border-radius: 4px;    
+    border-radius: 4px;
     margin-bottom: 20px;
 }
 
@@ -846,7 +845,7 @@ label {
 }
 
 #container.contact input[type="text"] {
-    width: 300px; 
+    width: 300px;
 }
 #container.contact textarea {
     width: 505px;
@@ -864,7 +863,7 @@ label {
 
     -moz-box-shadow:    0px 4px 16px 4px #ccc;
     -webkit-box-shadow: 0px 4px 16px 4px #ccc;
-    box-shadow:         0px 4px 16px 4px #ccc;    
+    box-shadow:         0px 4px 16px 4px #ccc;
 }
     .payroll-table {
         margin-bottom: 20px;
